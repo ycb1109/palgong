@@ -1,0 +1,95 @@
+*{
+    --main-padding: 264px;
+    --main-width: 1400px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    color : inherit;
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+img{
+    display: block;
+}
+@font-face {
+    font-family: "noto_r";
+    src: url("../font/NotoSansKR-Regular.ttf");
+}
+@font-face {
+    font-family: "noto_m";
+    src: url("../font/NotoSansKR-Medium.ttf");
+}
+@font-face {
+    font-family: "noto_b";
+    src: url("../font/NotoSansKR-Bold.ttf");
+}
+@font-face {
+    font-family: "noto_sb";
+    src: url("../font/NotoSansKR-SemiBold.ttf");
+}
+
+@font-face{
+    font-family: "cinzel-r";
+    src: url("../font/Cinzel-Regular.ttf");
+}
+@font-face{
+    font-family: "cinzel-b";
+    src: url("../font/Cinzel-Bold.ttf");
+}
+
+
+/* header */
+header{
+    width: 100%;
+    height: 64px;
+    background-color: #0B203F;
+    position: fixed;
+    z-index: 9999; /* 🔥 숫자값이 높을수록 위로 올라옵니다 */
+    /* padding: 0 var(--main-padding); */
+    
+}
+header .menu{
+    width: var(--main-width);
+    margin: 0 auto;
+    /* max-width: 1920px; */
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+header .menu img{
+   /* 🔥 이미지 자체의 너비/높이를 지정하거나 비율 유지 */
+  height: 40px; /* 로고가 들어갈 실제 높이 (헤더 64px보다 작아야 위아래 여백이 생김) */
+  width: auto;  /* 가로 비율 자동 유지 */
+  object-fit: contain; /* 이미지 비율이 절대 깨지지 않도록 방어 */
+  
+  /* 🔥 padding 대신 margin-left로 여백을 줍니다 */
+  /* margin-left: 92px;  */
+  
+  /* 수직 중앙 정렬 */
+  align-self: center;
+}
+header .menu .nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction:row-reverse;
+}
+
+header .menu .nav ul{
+    display: flex;
+    gap: 40px; /* li 태그 사이의 간격 (원하는 만큼 조절하세요) */
+    /* padding-right: 92px; */
+    margin: 0;
+    
+}
+header .menu ul li{
+    font-family: "noto_r";
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+/* header */

@@ -782,9 +782,9 @@ footer .info_row_c span{
 
 /* 소셜 아이콘 스타일 */
 .footer-icon {
-  display: flex;
   gap: 15px;
-  
+  display: flex;
+  justify-content: flex-start;
 }
 
 .footer-icon a {
@@ -803,18 +803,32 @@ footer .info_row_c span{
 footer img{
   height: 40px; /* 로고가 들어갈 실제 높이 (헤더 64px보다 작아야 위아래 여백이 생김) */
   object-fit: contain; /* 이미지 비율이 절대 깨지지 않도록 방어 */
-  display: flex;
-  justify-content: flex-end;
+  float: right;
 }
 
 
 
-
-
-
-
 @media screen and (max-width: 768px){
-
+  header{
+    width: 1024px;
+  }
+  header .menu{
+    width: 100%;
+  }
+  header .menu img{
+    margin-left: 30px;
+  }
+  header .menu .nav{
+    min-width: 500px;
+    margin-right: 30px;
+  }
+  .section2 .s1{
+    margin-left: 50px;
+  }
+  .section2 .s1-1{
+    display:flex;
+    justify-content: flex-start;
+  }
 
 }
 
