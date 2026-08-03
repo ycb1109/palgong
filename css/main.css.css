@@ -784,6 +784,7 @@ footer .info_row_c span{
 .footer-icon {
   display: flex;
   gap: 15px;
+  
 }
 
 .footer-icon a {
@@ -799,22 +800,11 @@ footer .info_row_c span{
   transition: all 0.3s ease;
 }
 
-.footer-icon img:hover {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
 footer img{
   height: 40px; /* 로고가 들어갈 실제 높이 (헤더 64px보다 작아야 위아래 여백이 생김) */
-  width: auto;  /* 가로 비율 자동 유지 */
   object-fit: contain; /* 이미지 비율이 절대 깨지지 않도록 방어 */
-  
-  /* 🔥 padding 대신 margin-left로 여백을 줍니다 */
-  /* margin-left: 92px;  */
-  
-  /* 수직 중앙 정렬 */
   display: flex;
-  float: right;
+  justify-content: flex-end;
 }
 
 
