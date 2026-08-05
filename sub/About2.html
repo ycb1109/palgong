@@ -1,12 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="About2.html">
+    <title>index</title>
+    <link rel="stylesheet" href="../css/About2.css">
+    <link rel="shortcut icon" href="favicon/favicon-16x16.png" type="image/x-icon">
+    <script src="script/jquery-4.0.0.min.js"></script>
+    <script src="script/index.js"></script>
+    <script src="script/jquery-ui.min.js"></script>
 </head>
 <body>
+  <!-- header -->
+     <header>
+        <div class="menu">
+            <img src="../image/logo.png" alt="로고이미지">
+            <div class="ham">
+                <img src="icon/hamburger.svg" alt="hamburger">
+            </div>
+            <div class="nav">
+                <ul>
+                <li><a href="#">코스소개</a></li>
+                <li><a href="#">클럽소개</a></li>
+                <li><a href="#">이용안내</a></li>
+                <li><a href="#">예약하기</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+        </div>
+     </header>
+    <!-- //header -->
+
+    <!-- main -->
+     <main>
+        <div class="mainbox">
+            <img src="../image/About2/캡처.PNG" alt="1">
+            <div class="text_box">
+                <h2>RESERVATION</h2>
+                <p>보증금을 입금하시면 본인에 한해 예약 및 그린피 할인 혜택을 받으실 수 있습니다.<br>
+                    예약 가능한 코스와 시간을 확인 후, 정보를 입력해주세요.</p>
+                <button>보증금 제도 안내</button>
+            </div>
+        </div>
+     </main>
+    <!-- //main -->
+
+
+<!-- section1 -->
+<section class="section1">
+    <div class="reservation_wrap">
+        
+        <!-- 1. 실시간 예약 -->
+        <div class="res_col col1">
+            <h2>실시간 예약</h2>
+            <div class="legend">
+                <ul>
+                    <li><span class="dot green"></span>예약</li>
+                    <li><span class="dot red"></span>마감</li>
+                    <li><span class="dot blue"></span>오픈전</li>
+                </ul>
+            </div>
+
+            <!-- 6월 달력 -->
+            <div class="cal_box">
+                <h3>6월</h3>
+                <table class="cal_table">
+                    <thead>
+                        <tr>
+                            <th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class="sat">토</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="prev">31</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+                        <tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr>
+                        <tr><td>14</td><td>15</td><td>16</td><td>17</td><td class="select">18</td><td>19</td><td>20</td></tr>
+                        <tr><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td></tr>
+                        <tr><td>28</td><td>29</td><td>30</td><td class="next">1</td><td class="next">2</td><td class="next">3</td><td class="next">4</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 7월 달력 -->
+            <div class="cal_box">
+                <h3>7월</h3>
+                <table class="cal_table">
+                    <thead>
+                        <tr>
+                            <th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class="sat">토</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="prev">28</td><td class="prev">29</td><td class="prev">30</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+                        <tr><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+                        <tr><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr>
+                        <tr><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td></tr>
+                        <tr><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td class="next">1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. 코스 & 시간 선택 -->
+        <div class="res_col col2">
+            <h2>코스&시간</h2>
+            <div class="select_box">
+                <h3>코스선택</h3>
+                <ul class="course_btn">
+                    <li class="active"><a href="#"><span>동봉코스</span></a></li>
+                    <li><a href="#"><span>서봉코스</span></a></li>
+                </ul>
+            </div>
+            <div class="select_box">
+                <h3>시간선택</h3>
+                <ul class="time_btn">
+                    <li class="active"><a href="#"><span>06:18</span></a></li>
+                    <li><a href="#"><span>14:50</span></a></li>
+                    <li><a href="#"><span>16:10</span></a></li>
+                    <li><a href="#"><span>18:20</span></a></li>
+                    <li><a href="#"><span>13:20</span></a></li>
+                    <li><a href="#"><span>19:20</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. 예약정보 -->
+        <div class="res_col col3">
+            <h2>예약확인</h2>
+            <div class="info_wrap">
+                <h3>예약확인</h3>
+                <ul class="info_list">
+                    <li><span>오늘날짜</span> <strong>2020년 07월 12일(일)</strong></li>
+                    <li><span>예약날짜</span> <strong>2020년 08월 17일(금)</strong></li>
+                    <li><span>예약시간</span> <strong>06:18</strong></li>
+                    <li><span>코스</span> <strong>동봉코스</strong></li>
+                    <li><span>성명</span> <strong>윤채빈</strong></li>
+                    <li><span>연락처</span> <strong>010-5555-6666</strong></li>
+                </ul>
+                <div class="info_notice">
+                    <p>경기일 포함 5일 이내 예약시 취소가 불가하며,<br>미내장시 위약금을 징수 하게 됩니다.</p>
+                    <p class="sub_txt">위와 같이 예약하시겠습니까?<br>예약신청 버튼 클릭 시 예약이 완료됩니다.</p>
+                </div>
+                <button type="button" class="btn_submit">예약하기</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- //section1 -->
+
+
+
+<!-- footer -->
+    <footer>
+        <div class="footer-inner">
+            <!-- 회사 및 사업자 정보 -->
+            <div class="footer-info">
+                <div class="info-row">
+                    <span>우경개발(주)</span>
+                    <span>대구시 동구 팔공산로 237길 186(도학동, 팔공컨트리클럽)</span>
+                    <span>통신판매번호 : 제2009-대구동구-0217호</span>
+                </div>
+            <div class="info-row">
+                <span>사업자등록번호 : 502-81-09563</span>
+                <span>대표이사 : 정찬우</span>
+                <span>Tel. 053-982-8080~5</span>
+                <span>Fax. 053-982-8067</span>
+            </div>
+            <div class="info_row_c">
+                <span>Copyright © 2022 Palgong Country Club. All Right Reserved.</span>
+            </div>
+            </div>
+
+            <!-- 소셜 아이콘 영역 -->
+            <div class="footer-icon">
+                <img src="../icon/instagram.svg" alt="instagram">
+                <img src="../icon/youtube.svg" alt="youtube">
+                <img src="../icon/blog.svg" alt="blog">
+            </div>
+            <a href="#"><img src="../image/logo.png" alt="logo"></a>
+        </div>
+    </footer>
+    <!-- //footer// -->
     
 </body>
 </html>

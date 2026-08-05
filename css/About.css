@@ -73,8 +73,11 @@ header .menu img{
   /* 수직 중앙 정렬 */
   align-self: center;
 }
+header .menu .ham{
+  display: none;
+}
 header .menu .nav{
-    max-width: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction:row-reverse;
@@ -94,7 +97,6 @@ header .menu ul li{
     cursor: pointer;
 }
 /* //header */
-
 
 
 
