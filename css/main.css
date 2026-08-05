@@ -53,12 +53,13 @@ header{
     
 }
 header .menu{
-    width: var(--main-width);
-    margin: 0 auto;
+    /* width: var(--main-width); */
+    margin: auto 50px;
     /* max-width: 1920px; */
     height: 100%;
     display: flex;
     justify-content: space-between;
+
 }
 header .menu img{
    /* 🔥 이미지 자체의 너비/높이를 지정하거나 비율 유지 */
@@ -92,7 +93,7 @@ header .menu ul li{
     font-size: 16px;
     cursor: pointer;
 }
-/* header */
+/* //header */
 
 
 
@@ -152,7 +153,7 @@ header .menu ul li{
     font-family: "noto_r";
     font-size: 18px;
 }
-/* main */
+/* //main */
 
 
 
@@ -174,7 +175,7 @@ body > section.section6{
 body > section.section7{
     padding: unset;
 }
-/* body_all section size*/
+/* //body_all section size*/
 
 
 /* section1 */
@@ -217,7 +218,6 @@ body > section.section7{
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* 살짝 뜨는 그림자 효과 */
   margin-top: 90px;
   cursor: pointer;
-  /* section1 */
 }
 
 .card_item img {
@@ -253,7 +253,7 @@ body > section.section7{
   border-radius: 2px;
 }
 
-/* section1 */
+/* //section1 */
 
 
 
@@ -349,7 +349,7 @@ body > section.section7{
     line-height: 1.65;
     letter-spacing: -0.2px;
 }
-/* section2 */
+/* //section2 */
 
 
 
@@ -714,7 +714,7 @@ body > section.section7{
 }
 /* 카드 내부 텍스트 스타일 (이미지 위로 올리기) */
 .section7 .s2 > div p,
-.section7 .s2 > div h4 {
+.section7 .s2 > div h2 {
   position: relative;
   z-index: 2; /* 이미지보다 위에 오도록 설정 */
   margin: 0;
@@ -729,7 +729,7 @@ body > section.section7{
 }
 
 /* 서브 기간 텍스트 (h4) */
-.section7 .s2 > div h4 {
+.section7 .s2 > div h2 {
   font-family: "noto_r";
   font-size: 16px;
   font-weight: 400;
@@ -738,7 +738,7 @@ body > section.section7{
 /* //section7 */
 
 
-
+/* footer */
 /* 푸터 기본 배경 및 폰트 설정 */
 footer{
   background-color: #183023; /* 이미지 배경색과 유사한 짙은 차콜/브라운 */
@@ -805,6 +805,8 @@ footer img{
   object-fit: contain; /* 이미지 비율이 절대 깨지지 않도록 방어 */
   float: right;
 }
+
+/* //footer */
 
 
 

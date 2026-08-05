@@ -53,12 +53,13 @@ header{
     
 }
 header .menu{
-    width: var(--main-width);
-    margin: 0 auto;
+    /* width: var(--main-width); */
+    margin: auto 50px;
     /* max-width: 1920px; */
     height: 100%;
     display: flex;
     justify-content: space-between;
+
 }
 header .menu img{
    /* 🔥 이미지 자체의 너비/높이를 지정하거나 비율 유지 */
@@ -73,7 +74,7 @@ header .menu img{
   align-self: center;
 }
 header .menu .nav{
-    width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
     flex-direction:row-reverse;
@@ -92,4 +93,618 @@ header .menu ul li{
     font-size: 16px;
     cursor: pointer;
 }
-/* header */
+/* //header */
+
+
+
+
+/* main */
+main{
+    width: 100%;
+    height: 400px;
+}
+/* 부모 요소에 기준점 설정 */
+main .mainbox{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    
+}
+main .mainbox img{
+   position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    z-index: 1;           /* 글자 뒤로 배치 */
+}
+main .mainbox .text_box{
+    top: 139px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+
+}
+main .mainbox .text_box h2{
+    font-family: "cinzel-b";
+    font-size: 45px;
+}
+
+main .mainbox .text_box p{
+    margin-top: 10px;
+    font-family: "cinzel-r";
+    font-size: 24px;
+}
+
+/* //main */
+
+
+
+/* section1 */
+/* section1 전체 영역 여백 설정 */
+.section1 {
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* 탭 전체 감싸는 박스 */
+.tab_wrap {
+    width: 100%;
+    max-width: 900px; /* 전체 메뉴 영역 너비 */
+    margin: 150px auto;
+}
+
+/* 탭 리스트 (4개 항목 균등 배치) */
+.tab_menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 탭 각각의 항목 (1/4씩 나눠 가짐 + 상단 연한 회색선) */
+.tab_menu li {
+    flex: 1; /* 4개 항목을 같은 비율로 나눔 */
+    text-align: center;
+    position: relative;
+    border-top: 1px solid #ddd; /* 전체 흐린 상단 테두리 선 */
+    margin-top: 60px;
+}
+
+.tab_menu li a span{
+    font-family: "noto_m";
+    font-size: 18px;
+}
+/* 메뉴 글자 링크 스타일 */
+.tab_menu li a {
+    font-size: 18px;
+    font-family: "noto_m";
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #666;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* 💡 활성화된(선택된) 메뉴 스타일: active 클래스 */
+.tab_menu li.active {
+    border-top: 3px solid #222; /* 활성화된 탭의 두꺼운 상단 검은선 */
+}
+
+.tab_menu li.active a {
+    color: #000;
+    font-weight: bold;
+}
+/* //section1 */
+
+
+
+
+/* section2 */
+/* section2 전체 영역 */
+.section2{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    text-align: center; /* 내부 요소 전체 중앙 정렬 */
+    box-sizing: border-box;
+}
+
+/* 1. 메인 타이틀 (코스개요) */
+.section2 h2{
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 25px;
+    font-family: "noto_m";
+}
+
+/* 2. 서브 타이틀 (대구 팔공산...) */
+.section2 span{
+    display: block; /* 줄바꿈 적용 */
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 15px;
+    font-family: "noto_m";
+}
+
+/* 3. 설명글 */
+.section2 p{
+    font-size: 20px;
+    color: #555;
+    line-height: 1.7; /* 줄간격 조정 */
+    margin-bottom: 40px;
+    font-family: "noto_m";
+}
+
+/* 4. 일러스트 이미지 */
+.section2 img{
+    max-width: 1000px; /* 이미지 최대 넓이 (필요시 조절) */
+    width: 100%;     /* 반응형 크기 조절 */
+    height: auto;
+    display: block;
+    margin: 80px auto;  /* 이미지 중앙 배치 */
+}
+
+/* //section2 */
+
+
+
+/* section3 */
+/* section3 전체 컨테이너 설정 */
+.section3 {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+/* 제목 (대구의 자랑 명문코스) */
+.section3 h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 40px;
+    text-align: left; /* 좌측 정렬 */
+}
+
+/* 4개 카드를 가로로 나란히 배치 */
+.section3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 왼쪽부터 차례대로 배치 */
+    gap: 20px;                   /* 💡 카드 사이 간격 (원하는 px로 수정!) */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.section3 h2 {
+    width: 100%; /* 제목은 맨 위 줄 전체 차지 */
+    margin-bottom: 100px;
+}
+
+/* 각각의 카드 상자 (allbox) */
+.section3 .allbox {
+    position: relative; /* 텍스트를 이미지 위에 띄우기 위한 기준점 */
+    width: calc(25% - 15px); /* 4개 균등 분할 (간격 포함) */
+    height: 380px;      /* 카드 높이 설정 */
+    overflow: hidden;
+}
+
+/* 💡 피그마처럼 카드 높낮이 지그재그(Staggered) 연출 */
+.section3 .allbox:nth-child(even) {
+    margin-top: 30px; /* 2번째, 4번째 카드를 아래로 내림 */
+}
+
+/* 카드 배경 이미지 */
+.section3 .allbox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+    display: block;
+    cursor: pointer;
+}
+
+/* 💡 이미지 위 텍스트를 읽기 쉽게 어두운 그라데이션 오버레이 추가 */
+.section3 .allbox::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
+    pointer-events: none;
+}
+
+/* 이미지 위에 들어가는 텍스트 그룹 위치 설정 (좌측 하단) */
+.section3 .allbox p,
+.section3 .allbox span {
+    position: absolute;
+    left: 20px;
+    z-index: 2; /* 이미지 및 오버레이보다 위에 띄움 */
+    color: #ffffff; /* 글자색 흰색 */
+}
+
+/* 코스 제목 (p 태그) */
+.section3 .allbox p {
+    font-family: "noto_r";
+    bottom: 80px;
+    font-size: 22px;
+    margin: 0;
+}
+
+/* 코스 설명 (span 태그) */
+.section3 .allbox span {
+    font-family: "noto_r";
+    bottom: 25px;
+    font-size: 18px;
+    line-height: 1.2;
+    opacity: 0.85; /* 설명글은 살짝 투명하게 */
+}
+
+/* //section3 */
+
+/* section4 */
+/* section4 전체 배경 및 레이아웃 설정 */
+.section4 {
+    margin-top: 200px;
+    width: 100%;
+    background-color: #3A4D3F; /* 피그마의 짙은 국방색/카키 톤 배경 (필요시 색상코드 변경) */
+    padding: 60px 0;           /* 위아래 여백 */
+    display: flex;
+    justify-content: center;    /* 전체 박스들 중앙 배치 */
+    align-items: center;
+}
+
+/* 4개의 박스를 담는 세부 배치 (균등 분할) */
+.section4 .box {
+    flex: 1;                   /* 4개 박스 1:1:1:1 동일 비율 폭 */
+    max-width: 250px;          /* 각 아이콘 박스 최대 넓이 제한 */
+    text-align: center;        /* 아이콘 & 글자 중앙 정렬 */
+    color: #ffffff;            /* 글자색 흰색 */
+}
+
+/* 1. 아이콘 이미지 스타일 */
+.section4 .box img {
+    height: 40px;              /* 아이콘 적절한 크기 설정 */
+    width: auto;
+    margin-bottom: 15px;       /* 아이콘과 h3 사이 간격 */
+    display: inline-block;
+}
+
+/* 2. 메인 수치/영문 제목 (h3) */
+.section4 .box h3 {
+    font-family: "cinzel-m";
+    font-size: 22px;
+    letter-spacing: 1px;       /* 자간을 살짝 띄워 깔끔하게 */
+    margin-bottom: 8px;        /* h3와 p 사이 간격 */
+}
+
+/* 3. 서브 설명글 (p) */
+.section4 .box p {
+     font-family: "cinzel-m";
+    font-size: 22px;
+    margin: 0;
+    font-family: "noto_b";
+}
+/* //section4 */
+
+
+/* section5 */
+/* ==========================================
+   Section 5 전체 레이아웃 (수정본)
+   ========================================== */
+
+.section5 {
+    width: 100%;
+    max-width: 1200px; /* ★ 핵심 1: 전체 중앙 너비를 시안에 맞춰 제한합니다. ★ */
+    margin: 150px auto; /* 중앙 정렬 */
+    padding: 100px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 200px; /* 상단(topbox)과 하단(bottombox) 사이 여백 */
+}
+
+/* ------------------------------------------
+   Topbox & Bottombox 정렬
+   ------------------------------------------ */
+
+.section5 .topbox,
+.section5 .bottombox {
+  display: flex;
+  justify-content: space-between;
+  gap: 80px; /* 좌우 콘텐츠 사이 간격 */
+  width: 100%;
+}
+
+/* ★ 핵심 2: 좌우 콘텐츠가 5:5 비율을 넘지 않도록 제한합니다. ★ 
+   flex: 1 은 비율을, min-width: 0 은 Flex 자식이 팽창하는 버그를 막습니다. */
+.section5 .topbox_left,
+.section5 .topbox_right,
+.section5 .bottombox_left,
+.section5 .bottombox_right {
+  flex: 1;
+  min-width: 0; 
+  box-sizing: border-box;
+}
+
+
+/* ------------------------------------------
+   텍스트 설명 영역 (topbox_left & bottombox_right)
+   ------------------------------------------ */
+
+/* 카테고리 타이틀 (ABOUT CLUB, OUR EXPERIENCE) */
+.section5 .topbox_left h3,
+.section5 .bottombox_right h3 {
+    font-family: "noto_m";
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+/* 메인 설명 문구 (p) */
+.section5 .topbox_left p,
+.section5 .bottombox_right p {
+    font-family: "cinzel-b";
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 24px;
+}
+
+/* 서브 설명글 (span) */
+.section5 .topbox_left > span {
+    font-family: "cinzel-r";
+    display: block;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* 체크 리스트 (h4) */
+.section5 .topbox_left h4,
+.section5 .bottombox_right h4 {
+    font-family: "noto_r";
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+/* 체크 아이콘 이미지 */
+.section5 .topbox_left h4 img,
+.section5 .bottombox_right h4 img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+
+/* ------------------------------------------
+   골프장 정보 카드 영역 (베이지색 박스)
+   (.topbox_right & .bottombox_left)
+   ------------------------------------------ */
+
+.section5 .topbox_right,
+.section5 .bottombox_left {
+  background-color: #F5EBE0; /* 카드 베이지색 배경 */
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* ★ 핵심 3: 커다란 이미지가 부모 너비를 넘지 않도록 강제 제한합니다. ★ */
+.section5 .topbox_right > img,
+.section5 .bottombox_left > img {
+  width: 100%;
+  max-width: 100%; /* 부모 너비(padding 제외)에 맞춤 */
+  height: auto;
+  display: block;
+  margin-bottom: 24px;
+  object-fit: cover;
+}
+
+/* 골프장 이름 */
+.section5 .topbox_right > p,
+.section5 .bottombox_left > p {
+    font-family: "cinzel-b"; 
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* 기간 정보 (span) */
+.section5 .topbox_right > span,
+.section5 .bottombox_left > span {
+    font-family: "cinzel-r";
+    display: block;
+    font-size: 20px;
+    color:#777777;
+    font-weight: 500;
+}
+
+/* 가격 정보 (우하단 배치) */
+.section5 .topbox_right > h4,
+.section5 .bottombox_left > h4 {
+    font-family: "noto_r";
+    text-align: right;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+/* 부모 요소 배치 설정 (확인/추가) */
+.section5 .bottombox {
+    display: flex; /* 가로 배치 */
+    justify-content: space-between; /* 양 끝 정렬 */
+}
+
+/* 왼쪽 이미지 구역 비율 조정 */
+.section5 .bottombox_left {
+    width: 40%; /* 또는 원하는 비율, 예: 400px 고정 */
+}
+
+/* 오른쪽 텍스트 구역 비율 조정 */
+.section5 .bottombox_right {
+    width: 55%; /* 또는 나머지 공간 차지 */
+}
+
+/* 기존 이미지 코드 (유지) */
+.section5 .bottombox_left > img {
+    width: 100%; /* 이제 40%로 줄어든 부모를 꽉 채움 */
+    /* ... */
+}
+/* //section5 */
+
+
+
+/* section6 */
+
+/* --- section6 전체 컨테이너 --- */
+.section6 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 중앙 정렬 */
+  align-items: center;     /* 수평 중앙 정렬 */
+  min-height: 250px;       /* 배너 높이 (디자인에 맞게 조절하세요) */
+  padding: 50px 20px;      /* 상하 여백 */
+  overflow: hidden;
+  text-align: center;
+  z-index: 1;              /* 쌓임 순서(Stacking Context) 형성 */
+}
+
+/* --- 배경 이미지 처리 --- */
+.section6 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지 비율을 유지하면서 빈틈없이 꽉 채움 */
+  z-index: -1;       /* 다른 요소들보다 뒤에 배치 */
+}
+
+/* --- 메인 타이틀 (p) --- */
+.section6 p {
+    font-family: "noto_r";
+    font-size: 24px;         /* 글꼴 크기 */
+    font-weight: 700;        /* 굵게 */
+    margin: 0 0 10px 0;      /* 아래쪽 여백 */
+}
+
+/* --- 서브 텍스트 (span) --- */
+.section6 span {
+    font-family: "noto_r";
+    display: block;          /* span을 블록 요소로 변경하여 줄바꿈 효과 */
+    font-size: 16px;
+     margin: 0 0 25px 0;      /* 버튼과의 간격 */
+}
+
+/* --- 예약 버튼 (button) --- */
+.section6 button {
+    font-family: "noto_r";
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #ffffff; /* 흰색 배경 */
+    border: 1px solid #dcdcdc; /* 연한 회색 테두리 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 버튼 마우스 오버 효과 */
+.section6 button:hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+
+/* //section6 */
+
+
+
+
+
+/* footer */
+/* 푸터 기본 배경 및 폰트 설정 */
+footer{
+  background-color: #183023; /* 이미지 배경색과 유사한 짙은 차콜/브라운 */
+  color: #ffffff;           /* 밝은 연회색 텍스트 */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  /* padding: 40px var(--main-padding); */
+  height: 320px;
+  display: flex;
+}
+
+.footer-inner {
+  width: var(--main-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 60px;
+}
+
+/* 텍스트 행 스타일 */
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.info-row span {
+  display: inline-block;
+}
+footer .info_row_c span{
+  color:white;
+}
+
+/* 카피라이트 문구 */
+.copyright {
+  margin-top: 5px;
+  color: #b0ad9e;
+}
+
+/* 소셜 아이콘 스타일 */
+.footer-icon {
+  gap: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer-icon a {
+  color: #d1cfc7;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d1cfc7;
+  border-radius: 8px; /* 곡률 지정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+footer img{
+  height: 40px; /* 로고가 들어갈 실제 높이 (헤더 64px보다 작아야 위아래 여백이 생김) */
+  object-fit: contain; /* 이미지 비율이 절대 깨지지 않도록 방어 */
+  float: right;
+}
+
+/* //footer */
+
