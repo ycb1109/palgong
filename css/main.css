@@ -991,46 +991,74 @@ footer img{
   .section4 .s1 .s1_text h2{
     font-size: 16px;
   }
-  .section4 .s1 .s1_text h2{
+  .section4 .s1 .s1_text h3{
     font-size: 14px;
   }
   .section4 .s1 .s1_text .btn span{
-    font-size: 12px;
+    font-size: 14px;
   }
   /* //section4 */
 
 
   /* section5 */
   .section5 {
-    max-width: 1024px;
-    min-width: auto;
-    height: auto;
-    padding: 60px 0; /* 좌우 패딩을 0으로 지워줍니다 */
-    margin: 0 auto;
+    height: auto !important;
+    min-height: 0 !important;
+    display: block !important; /* flex/grid 수직 정렬 간섭 제거 */
+    padding-bottom: 170px;
+    padding-left: 20px;
   }
+ 
+  /* 2. 정확한 5:5 그리드 및 간격 축소 */
   .section5 .s1 {
-    display: flex;
-    align-items: center;    /* 핵심: 자식 요소들을 화면 정중앙으로! */
-    justify-content: center;
-    gap: 10px;
-    width: 100%;            /* 너비를 전체로 */
-    padding: 0;             /* 기존에 들어가 있던 padding 제거 */
-    margin: 0 auto;         /* 좌우 마진 중앙 배치 */
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 화면을 정확히 반반 나눔 */
+    gap: 20px 10px !important; /* 좌우 간격을 10px로 좁혀 넘침 해결 */
+    width: 100%;
+    box-sizing: border-box;
   }
-  .section5 .s1 .s1-1{
-    display: block;  /* flex 배치를 일반 블록 상태로 변경 */
-    width: 100%;     /* 너비를 부모에 맞게 유연하게 설정 */
-    height: auto;
-  }
-  /* 개별 아이템 상자 */
+
+  /* 3. 개별 아이템 박스 */
+  .section5 .s1 .s1-1,
   .section5 .s1 .text_box {
-    display: flex;
+    display: flex !important;
     align-items: center;
-    margin: 0;
+    gap: 8px; /* 아이콘과 텍스트 사이 간격 줄임 */
+    width: 100%;
+    min-width: 0; /* Flex/Grid 자식 요소의 텍스트 넘침 방지 핵심 코드 */
+    box-sizing: border-box;
   }
-   .section5 .s1 .text_box h3{
-    font-size: 14px;
-   }
+
+  /* 4. 아이콘 크기 고정 */
+  .section5 .s1 img {
+    width: 28px !important; /* 아이콘 크기를 약간 줄임 */
+    height: 28px !important;
+    flex-shrink: 0; /* 이미지 비율 유지 */
+  }
+
+  /* 5. 텍스트 영역이 공간을 초과하지 않도록 설정 */
+  .section5 .s1 .text_box > div,
+  .section5 .s1 .s1-1 > div {
+    flex: 1;
+    min-width: 0; /* 텍스트 줄바꿈 허용 */
+  }
+
+  /* 6. 폰트 크기 및 줄바꿈 최적화 */
+  .section5 .s1 h3 {
+    font-size: 16px !important;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    word-break: keep-all; /* 단어 단위 자연스러운 줄바꿈 */
+  }
+
+  .section5 .s1 p,
+  .section5 .s1 span {
+    font-size: 9px !important;
+    color: #666;
+    line-height: 1.2;
+    word-break: keep-all;
+  }
   /* //section5 */
 
 
@@ -1095,43 +1123,467 @@ footer img{
 
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 575px) {
 
   /* header */
-  header{
-    width: 100%;
-    height: 98px;
-  }
-  header .menu {
+    header {
+        width: 100%;
+        height: 98px;
+    }
+
+    /* 부모 컨테이너를 기준점으로 설정 */
+    header .menu {
+        position: relative;
+        display: flex;
+        justify-content: center; /* 로고를 중앙 정렬 */
+        align-items: center;     /* 세로 중앙 정렬 */
+        height: 100%;
+    }
+
+    /* 로고 이미지 */
+    header .menu > img {
+        display: block;
+        width: 139px;
+        height: auto; /* 비율 유지 */
+        margin-top: 10%; /* 기존 margin-top 제거 */
+    }
+
+    /* 햄버거 버튼을 오른쪽 끝에 고정 */
+    header .menu .ham {
+        display: inline;
+        position: absolute;
+        right: 10px; /* 오른쪽 여백 조절 */
+        top: 70%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    /* 네비게이션 숨김 */
+    header .menu .nav {
+        display: none;
+    }
+
+    /* //header */
+
+
+
+    /* section1 */
+    .section1{
+    width: 100%;           /* 반응형을 위해 고정 px 대신 100% 추천 */
+    max-width: 575px;     /* 최대 너비 제한 */
+    margin: 0 auto;        /* 좌우 중앙 정렬의 핵심! */
+    text-align: center;    /* 텍스트 내용 중앙 정렬 */
+    }
+    .section1 .s1 h2{
+    font-size: 12px;
+    }
+    .section1 .s1 p{
+    font-size: 10px;
+    }
+    /* ///section1 */
+
+
+
+
+    /* section2 */
+  /* 핵심: PC의 가로 배치(flex-direction: row)를 세로(column)로 강제 변경 */
+    .section2 {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 575px !important;
+        margin: 0 auto !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 텍스트 영역 */
+    .section2 .s1 {
+        width: 100% !important;
+        text-align: left !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 카드 컨테이너 영역 */
+    .section2 .s1-1 {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding-left: 0 !important; /* PC 좌측 여백 해제 */
+        gap: 20px !important;
+    }
+    .section2 .s1 h2{
+        font-size: 14px;
+    }
+    .section2 .s1 h3{
+        font-size: 10px;
+        font-weight: 800;
+    }
+    .section2 .s1 p{
+        font-size: 10px;
+    }
+    
+
+    /* 개별 카드 */
+    .course-card {
+        width: 100% !important;
+        margin-left: 0 !important; /* PC 좌측 여백 해제 */
+        height: 200px !important;
+        position: relative !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+    }
+
+    
+    .course-card .card-image {
+      width: 100% !important;  /* 부모 너비를 꽉 채우도록 설정 */
+      height: 100% !important; /* 부모 높이를 꽉 채우도록 설정 */
+      overflow: hidden !important; /* 둥근 모서리 밖으로 이미지가 튀어나가지 않도록 설정 */
+    }
+
+    .course-card .card-image img {
+      width: 100% !important;  /* 컨테이너 너비에 꽉 차게 설정 */
+      height: 100% !important; /* 컨테이너 높이에 꽉 차게 설정 */
+      object-fit: cover !important; /* ★핵심: 비율을 유지하며 컨테이너를 가득 채우고 넘치는 부분은 자름 */
+      display: block !important;    /* 이미지 하단 여백 제거 */
+    }
+
+    .course-card .card-content {
+        position: absolute !important;
+        top: 0px !important;
+        left: 0px !important;
+        z-index: 2 !important;
+    }
+
+    .course-card .card-content h3{
+      top: 0;
+    }
+
+    /* //section2 */
+
+
+
+    /* section3 */
+    /* 1. section3 컨테이너 설정 */
+    .section3 {
+        width: 100% !important;
+        max-width: 575px !important;
+        margin: 0 auto !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. 상단 헤더 영역 (GOLF COURSE / 코스전체보기) 양끝 정렬 */
+    .section3 .s1 {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-bottom: 24px !important;
+    }
+
+    .section3 .s1 h2 {
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: #111 !important;
+        margin: 0 !important;
+    }
+
+    .section3 .s1 p {
+        font-size: 13px !important;
+        color: #333 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        margin: 0 !important;
+        cursor: pointer !important;
+    }
+
+    /* 3. 카드 컨테이너 (세로 1열 정렬) */
+    .section3 .card-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* 4. 개별 정사각형 카드 박스 */
+    .section3 .card {
+        position: relative !important;
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important; /* 와이어프레임처럼 정확한 1:1 정사각형 유지 */
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important; /* 그림자 효과 */
+    }
+
+    /* 5. 카드 배경 이미지 (비율 유지하며 꽉 채우기) */
+    .section3 .card > img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+
+    /* 6. 카드 내부 좌상단 텍스트 */
+    .section3 .card .card_text {
+        position: absolute !important;
+        top: 24px !important;
+        left: 20px !important;
+        z-index: 2 !important;
+        color: #ffffff !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important; /* 흰 글씨 가독성 보장 */
+    }
+
+    .section3 .card .card_text h2 {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        color: #fff !important;
+    }
+
+    .section3 .card .card_text p {
+        font-size: 8px !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        margin: 15px 0px !important;
+    }
+
+    /* 7. 카드 내부 우하단 자세히보기 버튼 */
+    .section3 .card .btn {
+        position: absolute !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        z-index: 2 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        color: #ffffff !important;
+        font-size: 12px !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important;
+        cursor: pointer !important;
+    }
+
+    .section3 .card .btn span {
+        color: #fff !important;
+    }
+
+    .section3 .card .btn img {
+        width: 12px !important;
+        height: auto !important;
+    }
+    
+    /* //section3 */
+
+
+
+    
+    /* section4 */
+    /* 1. 두 박스를 감싸는 부모 div (image_6.png의 185라인 부분) */
+    .section4 > div {
     display: flex;
-    justify-content: space-between; /* 로고는 왼쪽, 햄버거는 오른쪽 끝 */
-    align-items: center;            /* 세로 중앙 정렬 */
-    padding: 0 20px;                /* 양옆 여백 */
+    }
+
+    /* 2. 초록색 박스 비율 */
+    .section4 .s1 {
+    /* width: 400px;  <-- 이 고정값은 삭제하거나 주석 처리하세요 */
+    flex: 0.6;  /* 60% 비율 */
+    }
+
+    /* 3. 이미지 박스 비율 */
+    .section4 .image-container {
+      flex: 4;  /* 40% 비율 */
+    }
+    
+    .section4 .s1 .s1_text{
+      margin-left: 20px;
+    }
+    .section4 .s1 .s1_text h2{
+      font-size: 10px;
+    }
+    .section4 .s1 .s1_text h3{
+      font-size: 8px;
+    }
+    .section4 .s1 .s1_text .btn span{
+      font-size: 8px;
+    }
+    /* //section4 */
+
+
+
+     /* section5 */
+ .section5 {
+    height: auto !important;
+    min-height: 0 !important;
+    display: block !important; /* flex/grid 수직 정렬 간섭 제거 */
+  }
+ 
+  /* 2. 정확한 5:5 그리드 및 간격 축소 */
+  .section5 .s1 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 화면을 정확히 반반 나눔 */
+    box-sizing: border-box;
   }
 
-  header .menu img {
-    margin-top: 43px;
-  }
-  header .menu img:nth-child(1){
-    width: 139px;
-    height: 59px;
-    margin-top: 43px;
-    align-content: center;
-  }
-  header .menu .nav{
-    display: none;
-  }
-  header .menu p{
-    display: block; /* 또는 flex */
-    cursor: pointer;
+  /* 3. 개별 아이템 박스 */
+  .section5 .s1 .s1-1,
+  .section5 .s1 .text_box {
+    display: flex !important;
+    align-items: center;
+    gap:2px; /* 아이콘과 텍스트 사이 간격 줄임 */
+    box-sizing: border-box;
   }
 
+  /* 4. 아이콘 크기 고정 */
+  .section5 .s1 img {
+    width: 28px !important; /* 아이콘 크기를 약간 줄임 */
+    height: 28px !important;
+    flex-shrink: 0; /* 이미지 비율 유지 */
+  }
+
+  /* 5. 텍스트 영역이 공간을 초과하지 않도록 설정 */
+  .section5 .s1 .text_box > div,
+  .section5 .s1 .s1-1 > div {
+    flex: 1;
+    min-width: 0; /* 텍스트 줄바꿈 허용 */
+  }
+
+  /* 6. 폰트 크기 및 줄바꿈 최적화 */
+  .section5 .s1 h3 {
+    font-size: 8px !important;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    word-break: keep-all; /* 단어 단위 자연스러운 줄바꿈 */
+  }
+
+  .section5 .s1 p,
+  .section5 .s1 span {
+    font-size: 9px !important;
+    color: #666;
+    line-height: 1.2;
+    word-break: keep-all;
+  }
+    /* //section5 */
 
 
-  /* //header */
+    
+    /* section6 */
+  .section6 .s1 h1{
+    font-size: 40px;
+    }
+  .section6 .s1 p{
+    margin-top: -70px;
+    font-size: 8px;
+    float: right;
+  }
+  .section6 .s2 iframe {
+    margin-left: 100px;
+    max-width: 400px; /* 원하는 최대 너비 지정 */
+    height: 390px;     /* 비율 유지 */
+  }
+    /* //section6 */
 
 
 
+    /* section7 */
 
+  .section7 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 35px 16px !important;
+    box-sizing: border-box !important;
+    background-color: #ffffff;
+  }
 
-} 
+  /* 2. 상단 타이틀 (CLUB NEWS) 및 밑줄 설정 */
+  .section7 .s1 {
+    text-align: center !important;
+    margin-bottom: 24px !important;
+  }
+
+  .section7 .s1 h1 {
+    font-size: 8px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    color: #111111 !important;
+    display: inline-block !important;
+    position: relative !important;
+    padding-bottom: 8px !important;
+    margin: 0 !important;
+  }
+
+  /* CLUB NEWS 아래 밑줄 */
+  .section7 .s1 h1::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    height: 1.5px !important;
+    background-color: #111111 !important;
+  }
+
+  /* 3. 배너 카드 그리드 (2열 정렬) */
+  .section7 .s2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 2열 반반 배치 */
+    gap: 12px 10px !important; /* 카드 간격 */
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 4. 개별 카드 상자 (.s2-1 ~ .s2-6) */
+  .section7 .s2 > div {
+    position: relative !important;
+    width: 100% !important;
+    height: 85px !important; /* 카드 높이 지정 */
+    border-radius: 14px !important; /* 둥근 모서리 */
+    overflow: hidden !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important; /* 그림자 효과 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 5. 카드 배경 이미지 */
+  .section7 .s2 > div img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 1 !important; /* 이미지 레이어 하단 배치 */
+  }
+
+  /* 6. 카드 내부 메인 텍스트 (<p>) */
+  .section7 .s2 > div p {
+    position: relative !important;
+    z-index: 2 !important; /* 이미지 위로 올림 */
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    word-break: keep-all !important;
+  }
+
+  /* 7. 카드 내부 날짜 안내 (<h2) */
+  .section7 .s2 > div h2 {
+    position: relative !important;
+    z-index: 2 !important;
+    font-size: 8.5px !important;
+    font-weight: 400 !important;
+    color: #444444 !important;
+    text-align: center !important;
+    margin-top: 4px !important;
+    line-height: 1.2 !important;
+    word-break: keep-all !important;
+  }
+    /* //section7 */
+}
