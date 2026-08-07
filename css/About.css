@@ -709,4 +709,587 @@ footer img{
 }
 
 /* //footer */
+/* tab */
+.tab-bar {
+  display: none;
+}
+/* //tab */
 
+
+
+@media screen and (max-width: 1024px){
+
+
+    /* --- 공통 레이아웃 --- */
+    * {
+        box-sizing: border-box;
+    }
+
+    /* --- 1. Header --- */
+    header {
+        width: 100%;
+        height: 64px;
+    }
+    header .menu {
+        margin: 0 30px;
+    }
+    header .menu .nav {
+        display: flex;
+        margin-left: 0;
+    }
+    header .menu .nav ul {
+        gap: 20px;
+    }
+    header .menu .nav ul li a {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    /* --- 2. Main Visual --- */
+    main {
+        height: 350px;
+    }
+    main .mainbox img {
+        height: 350px;
+    }
+    main .mainbox .text_box {
+        top: 100px;
+    }
+    main .mainbox .text_box h2 {
+        font-size: 34px;
+    }
+    main .mainbox .text_box p {
+        font-size: 18px;
+    }
+
+    /* --- 3. Section 1 (Tabs) --- */
+    .section1 {
+        padding: 20px 0;
+    }
+    .tab_wrap {
+        margin: 40px auto 20px auto;
+        padding: 0 30px;
+    }
+    .tab_menu li {
+        margin-top: 0;
+    }
+    .tab_menu li a span {
+        font-size: 15px;
+    }
+
+    /* --- 4. Section 2 (Course Intro) --- */
+    .section2 {
+        padding: 40px 30px 60px;
+    }
+    .section2 h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    .section2 span {
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+    .section2 p {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    .section2 img {
+        margin: 30px auto 0;
+        max-width: 100%;
+    }
+
+    /* --- 5. Section 3 (2열 카드 그리드) --- */
+    .section3 {
+        padding: 40px 30px;
+        gap: 20px;
+    }
+    .section3 h2 {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .section3 .allbox {
+        width: calc(50% - 10px); /* 4열에서 태블릿 전용 2열 구조로 변경 */
+        height: 320px;
+    }
+    .section3 .allbox:nth-child(even) {
+        margin-top: 0 !important; /* PC용 지그재그 마진 초기화 */
+    }
+    .section3 .allbox p {
+        font-size: 18px;
+        bottom: 60px;
+    }
+    .section3 .allbox span {
+        font-size: 14px;
+        bottom: 20px;
+    }
+
+    /* --- 6. Section 4 (Icon Bar) --- */
+    .section4 {
+        margin-top: 60px;
+        padding: 35px 20px;
+    }
+    .section4 .box img {
+        height: 32px;
+        margin-bottom: 10px;
+    }
+    .section4 .box h3 {
+        font-size: 16px;
+    }
+    .section4 .box p {
+        font-size: 14px;
+    }
+
+    /* --- 7. Section 5 (About Club & Experience) --- */
+    .section5 {
+        margin: 60px auto;
+        padding: 0 30px;
+        gap: 60px;
+    }
+    .section5 .topbox,
+    .section5 .bottombox {
+        gap: 30px;
+    }
+    .section5 .topbox_left,
+    .section5 .bottombox_right {
+        width: 50%;
+    }
+    .section5 .topbox_right,
+    .section5 .bottombox_left {
+        width: 50%;
+        padding: 24px;
+    }
+    .section5 .bottombox_right {
+        margin-left: 0;
+    }
+    .section5 .topbox_left h3,
+    .section5 .bottombox_right h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    .section5 .topbox_left p,
+    .section5 .bottombox_right p {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    .section5 .topbox_left > span {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    .section5 .topbox_left h4,
+    .section5 .bottombox_right h4 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .section5 .topbox_right > p,
+    .section5 .bottombox_left > p {
+        font-size: 18px;
+    }
+    .section5 .topbox_right > span,
+    .section5 .bottombox_left > span {
+        font-size: 13px;
+    }
+    .section5 .topbox_right > h4,
+    .section5 .bottombox_left > h4 {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    /* --- 8. Section 6 (CTA Banner) --- */
+    .section6 {
+        min-height: 200px;
+        padding: 40px 20px;
+    }
+    .section6 p {
+        font-size: 20px;
+    }
+    .section6 span {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .section6 button {
+        padding: 8px 24px;
+        font-size: 13px;
+    }
+
+    /* --- 9. Footer & Tab Bar --- */
+    footer {
+        width: 100%;
+        height: auto;
+        padding: 50px 30px;
+    }
+    .footer-inner {
+        width: 100%;
+        padding-top: 0;
+    }
+    .tab-bar {
+        display: none; /* 1024px 태블릿 해상도에서는 하단 탭바 노출 제외 */
+    }
+
+}
+
+
+@media screen and (max-width: 575px) {
+/* --- 공통 레이아웃 & 바텀 탭바 공간 확보 --- */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding-bottom: 60px; /* 하단 고정 탭바 높이만큼 여백 확보 */
+    }
+
+    /* --- 1. Header --- */
+    header {
+        width: 100%;
+        height: 60px;
+    }
+    header .menu {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0 16px;
+    }
+    header .menu > img {
+        height: 28px;
+        width: auto;
+    }
+    header .menu .ham {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    header .menu .ham img {
+        height: 22px;
+    }
+    header .menu .nav {
+        display: none; /* 모바일 네비게이션 숨김 */
+    }
+
+    /* --- 2. Main Visual --- */
+    main {
+        height: 280px;
+    }
+    main .mainbox {
+        height: 280px;
+    }
+    main .mainbox img {
+        height: 280px;
+    }
+    main .mainbox .text_box {
+        top:120px;
+        padding: 0 16px;
+    }
+    main .mainbox .text_box h2 {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+    main .mainbox .text_box p {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    /* --- 3. Section 1 (Tabs) --- */
+    .section1 {
+        padding: 20px 0;
+    }
+    .tab_wrap {
+        margin: 10px auto;
+        padding: 0 16px;
+    }
+    .tab_menu li {
+        margin-top: 0;
+    }
+    .tab_menu li a {
+        padding: 10px 0;
+    }
+    .tab_menu li a span {
+        font-size: 14px;
+    }
+
+    /* --- 4. Section 2 (Course Intro) --- */
+    .section2 {
+        padding: 30px 16px;
+    }
+    .section2 h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .section2 span {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .section2 p {
+        font-size: 12px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        word-break: keep-all;
+    }
+    .section2 img {
+        margin: 20px auto 0;
+        max-width: 100%;
+    }
+
+    /* --- 5. Section 3 (1개 카드 슬라이더 형태) --- */
+    .section3 {
+        position: relative;
+        padding: 30px 16px;
+        margin: 0 auto;
+    }
+    .section3 h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .section3 .allbox {
+        display: none; /* 기본 전체 숨김 */
+        width: 100%;
+        max-width: 280px;
+        height: 340px;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+    .section3 .allbox:first-of-type,
+    .section3 .allbox.active {
+        display: block !important; /* 첫번째/활성화 카드만 노출 */
+    }
+    .section3 .allbox:nth-child(even) {
+        margin-top: 0 !important;
+    }
+    .section3 .allbox p {
+        font-size: 16px;
+        bottom: 50px;
+        left: 16px;
+    }
+    .section3 .allbox span {
+        font-size: 12px;
+        bottom: 16px;
+        left: 16px;
+    }
+
+    /* --- 6. Section 4 (2x2 Icon Grid) --- */
+    .section4 {
+        margin-top: 40px;
+        padding: 30px 16px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 10px;
+    }
+    .section4 .box {
+        max-width: none;
+    }
+    .section4 .box img {
+        height: 28px;
+        margin-bottom: 6px;
+    }
+    .section4 .box h3 {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+    .section4 .box p {
+        font-size: 12px;
+    }
+
+    /* --- 7. Section 5 (Vertical Stack) --- */
+    .section5 {
+    width: 100% !important;
+    margin: 30px auto !important;
+    padding: 0 16px !important;
+    gap: 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* 상단/하단 행 가로 정렬 고정 */
+.section5 .topbox,
+.section5 .bottombox {
+    display: flex !important;
+    flex-direction: row !important; /* 세로가 아닌 가로 배치 */
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 12px !important; /* 좌우 박스 간격 */
+    width: 100% !important;
+}
+
+/* 좌/우 각 영역 50% 너비 적용 */
+.section5 .topbox_left,
+.section5 .topbox_right,
+.section5 .bottombox_left,
+.section5 .bottombox_right {
+    width: 50% !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* 텍스트 영역 스타일 (ABOUT CLUB / OUR EXPERIENCE) */
+.section5 .topbox_left h3,
+.section5 .bottombox_right h3 {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    letter-spacing: -0.3px !important;
+}
+
+.section5 .topbox_left p,
+.section5 .bottombox_right p {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+    margin-bottom: 6px !important;
+    word-break: keep-all !important;
+}
+
+.section5 .topbox_left > span {
+    display: block !important;
+    font-size: 9px !important;
+    line-height: 1.35 !important;
+    color: #555555 !important;
+    margin-bottom: 10px !important;
+    word-break: keep-all !important;
+}
+
+.section5 .topbox_left h4,
+.section5 .bottombox_right h4 {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 10px !important;
+    margin-bottom: 4px !important;
+    font-weight: 500 !important;
+    word-break: keep-all !important;
+}
+
+.section5 .topbox_left h4 img,
+.section5 .bottombox_right h4 img {
+    width: 10px !important;
+    height: 10px !important;
+    flex-shrink: 0 !important;
+}
+
+/* 카드 영역 스타일 (베이지색 박스) */
+.section5 .topbox_right,
+.section5 .bottombox_left {
+    background-color: #F5EBE0 !important;
+    padding: 10px !important;
+    border-radius: 4px !important;
+}
+
+.section5 .topbox_right > img,
+.section5 .bottombox_left > img {
+    width: 100% !important;
+    height: 95px !important; /* 이미지 높이 조절 */
+    object-fit: cover !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+    border-radius: 2px !important;
+}
+
+.section5 .topbox_right > p,
+.section5 .bottombox_left > p {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    margin-bottom: 2px !important;
+}
+
+.section5 .topbox_right > span,
+.section5 .bottombox_left > span {
+    font-size: 9px !important;
+    color: #777777 !important;
+    display: block !important;
+    margin-bottom: 10px !important;
+}
+
+.section5 .topbox_right > h4,
+.section5 .bottombox_left > h4 {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-align: right !important;
+    margin: 0 !important;
+}
+
+    /* --- 8. Section 6 (CTA Banner) --- */
+    .section6 {
+        min-height: 180px;
+        padding: 30px 16px;
+    }
+    .section6 p {
+        font-size: 16px;
+    }
+    .section6 span {
+        font-size: 12px;
+        margin-bottom: 16px;
+        word-break: keep-all;
+    }
+    .section6 button {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+
+    /* --- 9. Footer --- */
+    footer {
+        width: 100%;
+        height: auto;
+        padding: 30px 16px 80px 16px; /* 탭바 높이(60px) 여백 보장 */
+        text-align: left;
+    }
+    .footer-inner {
+        width: 100%;
+        padding-top: 0;
+        gap: 16px;
+    }
+    .info-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+    footer .footer-info .info-row span,
+    footer .info_row_c span {
+        font-size: 10px;
+        color: #a0a0a0;
+    }
+    footer img {
+        float: none;
+        display: block;
+        margin-top: 10px;
+        height: 24px;
+    }
+
+    /* --- 10. Bottom Tab Bar --- */
+    .tab-bar {
+        display: flex !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #ffffff;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 2px solid #1c3527;
+        z-index: 10000;
+    }
+    .tab-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #333333;
+        width: 100%;
+        height: 100%;
+        gap: 2px;
+    }
+    .tab-item img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+    .tab-item span {
+        font-size: 10px;
+        font-weight: 500;
+    }
+}
