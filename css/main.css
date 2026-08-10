@@ -41,8 +41,81 @@ img{
     src: url("../font/Cinzel-Bold.ttf");
 }
 
+/* scroll-button */
+/* Top 버튼 디자인 (글래스모피즘 + 글로우) */
+.top-btn {
+  position: fixed;
+  bottom: 90px; /* 모바일 하단 탭바 레이아웃 고려 */
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(11, 32, 63, 0.85); /* 브랜드 메인 컬러 반영 */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.top-btn:hover {
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 12px 25px rgba(11, 32, 63, 0.45);
+  background: #0B203F;
+}
+
+/* 화살표 및 원형 진행률(Progress Ring) */
+.top-btn .arrow {
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.top-btn:hover .arrow {
+  transform: translateY(-3px);
+}
+
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.1s linear;
+  stroke: #ffffff; /* 진행 바 색상 */
+}
+/* //scroll-button */
 
 /* header */
+/* heder스크롤변화 */
+header {
+  transition: all 0.3s ease;
+}
+header.scrolled {
+  height: 54px;
+  background-color: rgba(11, 32, 63, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+/* //heder스크롤변화 */
+
 header{
     width: 100%;
     height: 64px;
@@ -81,6 +154,61 @@ header .menu .nav{
     display: flex;
     align-items: center;
     flex-direction:row-reverse;
+    display: flex;
+    align-items: center;
+}
+/* 1 depth (메인 메뉴) */
+header .menu .nav ul.gnb {
+    display: flex;
+    gap: 40px;
+    margin: 0;
+}
+header .menu .nav ul.gnb > li {
+    position: relative; /* 서브메뉴 위치 기준점 설정 */
+    font-family: "noto_r";
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 64px; /* 헤더 높이와 맞춰 수직 중앙 정렬 */
+}
+
+/* 2 depth (하위 서브 메뉴) */
+header .menu .nav ul.sub_menu {
+    display: none; /* 기본 상태: 숨김 */
+    position: absolute;
+    top: 64px; /* 헤더 바로 아래 위치 */
+    left: 50%;
+    transform: translateX(-50%); /* 메뉴 중앙 정렬 */
+    width: 140px; /* 서브메뉴 너비 지정 */
+    background-color: rgba(255, 255, 255, 0.85); /* 반투명 배경 */
+    backdrop-filter: blur(4px); /* 배경 흐림 효과 */
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    gap: 0;
+    text-align: center;
+}
+
+header .menu .nav ul.sub_menu li {
+    line-height: 2; /* 하위 메뉴 간격 조절 */
+}
+
+header .menu .nav ul.sub_menu li a {
+    color: #333333;
+    font-size: 14px;
+    display: block;
+    padding: 2px 0;
+    transition: color 0.2s ease;
+}
+
+header .menu .nav ul.sub_menu li a:hover {
+    color: #0B203F;
+    font-weight: bold;
+}
+
+/* 🔥 핵심: 상위 li에 마우스 올렸을 때 서브메뉴 표시 */
+header .menu .nav ul.gnb > li:hover .sub_menu {
+    display: flex;
 }
 
 header .menu .nav ul{
@@ -363,6 +491,19 @@ body > section.section7{
 
 
 /* section3 */
+/* 카드 이미지 호버 줌 효과 */
+.section3 .card, .section7 .s2 > div {
+  overflow: hidden;
+}
+
+.section3 .card img, .section7 .s2 > div img {
+  transition: transform 0.5s ease;
+}
+
+.section3 .card:hover img, .section7 .s2 > div hover img {
+  transform: scale(1.08); /* 부드럽게 확대 */
+}
+/* 카드 이미지 호버 줌 효과 */
 .section3{
     width: 100%;
     height: 1000px;
@@ -1180,6 +1321,21 @@ footer img{
 }
 
 @media screen and (max-width: 575px) {
+  .top-btn {
+    bottom: 80px; /* 하단 고정 탭바 바로 위 배치 */
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+  .progress-ring {
+    width: 44px;
+    height: 44px;
+  }
+  .progress-ring__circle {
+    r: 17;
+    cx: 22;
+    cy: 22;
+  }
 
  /* --- 공통 레이아웃 & 바텀 탭바 공간 확보 --- */
   * {

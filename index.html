@@ -5,12 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="script/main.js">
     <script src="script/jquery-4.0.0.min.js"></script>
     <script src="script/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
 </head>
 
 <body>
+     <!-- scroll-button -->
+    <button id="back-to-top" class="top-btn" aria-label="맨 위로 이동">
+        <svg class="progress-ring" width="50" height="50">
+            <circle class="progress-ring__circle" stroke="#0B203F" stroke-width="3" fill="transparent" r="20" cx="25" cy="25"/>
+        </svg>
+        <span class="arrow">↑</span>
+    </button>
+
+    <!-- GSAP 라이브러리 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- 인터랙션 스크립트 -->
+    <script>
+
+      // 1. GSAP ScrollTrigger 플러그인 등록
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Section1: 카드 순차 등장 & 스케일 애니메이션
+      gsap.from(".section1 .s1 > *", {
+        scrollTrigger: { trigger: ".section1", start: "top 80%" },
+        y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+      });
+      gsap.from(".card_item", {
+        scrollTrigger: { trigger: ".card_list", start: "top 85%" },
+        y: 80, opacity: 0, scale: 0.9, duration: 1.2, stagger: 0.15, ease: "back.out(1.7)"
+      });
+
+      // Section2: 코스 카드 지그재그 슬라이드
+      gsap.from(".section2 .s1", {
+        scrollTrigger: { trigger: ".section2", start: "top 75%" },
+        x: -60, opacity: 0, duration: 1.2, ease: "power3.out"
+      });
+      gsap.from(".course-card", {
+        scrollTrigger: { trigger: ".s1-1", start: "top 80%" },
+        x: 80, opacity: 0, duration: 1.2, stagger: 0.3, ease: "power3.out"
+      });
+
+      // Section3 & Section7: 카드 패널 양감 넘치는 등장
+      gsap.from(".section3 .card", {
+        scrollTrigger: { trigger: ".section3", start: "top 75%" },
+        y: 60, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+      });
+      gsap.from(".section7 .s2 > div", {
+        scrollTrigger: { trigger: ".section7", start: "top 80%" },
+        y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+      });
+
+      // 2. Top 버튼 스크롤 프로그레스 & Smooth Scroll 기능
+      const topBtn = document.getElementById("back-to-top");
+      const circle = document.querySelector('.progress-ring__circle');
+      const radius = circle.r.baseVal.value;
+      const circumference = 2 * Math.PI * radius;
+
+      circle.style.strokeDasharray = `${circumference} ${circumference}`;
+      circle.style.strokeDashoffset = circumference;
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+        
+        // 원형 게이지 채우기
+        const offset = circumference - (scrollPercent * circumference);
+        circle.style.strokeDashoffset = offset;
+
+        // 버튼 표시 여부
+        if (scrollTop > 400) {
+          topBtn.classList.add("show");
+        } else {
+          topBtn.classList.remove("show");
+        }
+
+
+        // 헤더스크롤변화//
+        window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+        });
+        // 헤더스크롤변화//
+        
+        
+
+      });
+      
+
+      // 클릭 시 Smooth Scroll
+      topBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        
+      });
+
+      
+    </script>
+     <!-- //scroll-button -->
+
+
+     
     <!-- header -->
      <header>
         <div class="menu">
@@ -19,16 +122,60 @@
                 <img src="icon/hamburger.svg" alt="hamburger">
             </div>
             <div class="nav">
-                <ul>
-                <li><a href="#">코스소개</a></li>
-                <li><a href="#">클럽소개</a></li>
-                <li><a href="#">이용안내</a></li>
-                <li><a href="#">예약하기</a></li>
-                <li><a href="#">커뮤니티</a></li>
-                <li><a href="#">고객센터</a></li>
-                </ul>
-            </div>
+            <ul class="gnb">
+                <li>
+                    <a href="#">클럽소개</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">클럽스토리</a></li>
+                        <li><a href="#">찾아오시는길</a></li>
+                        <li><a href="#">시설안내</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">코스소개</a>
+                    <ul class="sub_menu">
+                        <li><a href="sub/About.html">코스안내</a></li>
+                        <li><a href="#">동봉코스</a></li>
+                        <li><a href="#">서봉코스</a></li>
+                        <li><a href="#">로컬룰</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">이용안내</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">이용요금</a></li>
+                        <li><a href="#">입장안내</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">예약하기</a>
+                    <ul class="sub_menu">
+                        <li><a href="sub/About2.html">실시간예약</a></li>
+                        <li><a href="#">대기예약</a></li>
+                        <li><a href="#">예약확인</a></li>
+                        <li><a href="#">예약취소</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">커뮤니티</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">포토갤러리</a></li>
+                        <li><a href="#">명예의전당</a></li>
+                        <li><a href="#">조인게시판</a></li>
+                        <li><a href="#">주변관광지</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">고객센터</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">분실물안내</a></li>
+                        <li><a href="#">자료실</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
+    </div>
      </header>
     <!-- //header -->
 
