@@ -1384,7 +1384,7 @@ footer img{
   }
 
   .main {
-    height: 520px !important;
+    height: 600px !important;
     margin-bottom: 40px !important;
   }
   .main .main_img img {
@@ -1394,6 +1394,12 @@ footer img{
     left: 20px;
     top: 35%;
     transform: translateY(-50%);
+  }
+  .main .main_img .text_box h2{
+    font-size: 14px;
+  }
+  .main .main_img .text_box h3{
+    font-size: 25px;
   }
   .main .main_img h2 {
     font-size: 14px;
@@ -1478,7 +1484,7 @@ footer img{
     gap: 20px !important;
   }
   .section2 .s1 {
-    margin-bottom: 0 !important;
+    margin-bottom: 0px !important;
   }
   .section2 .s1-1 {
     margin-top: -130px !important;
@@ -1521,6 +1527,7 @@ footer img{
     top: 20px !important;
     left: 20px !important;
     z-index: 2 !important;
+    
   }
   .card-content {
     position: absolute;
@@ -1537,6 +1544,10 @@ footer img{
   }
   .course-desc {
     display: none;
+  }
+  .section2 .s1-1 .card-content h3{
+    margin-top: -20px;
+    margin-left: -20px;
   }
 
   .section3 {
@@ -1566,7 +1577,7 @@ footer img{
   .section3 .card-container .card {
     width: 100% !important;
     min-width: 0 !important;
-    height: 220px !important;
+    height: 180px !important;
     max-width: none !important;
   }
   .section3 .card-container .card .card_text {

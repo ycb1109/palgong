@@ -643,12 +643,13 @@ footer img {
     header .menu .ham img { height: 22px; }
     header .menu .nav { display: none; }
 
-    main { height: 260px; }
-    main .mainbox { height: 260px; }
-    main .mainbox img { height: 260px; top: 0; }
+    main { height: 300px; }
+    main .mainbox { height: 300px; }
+    main .mainbox img { height: 300px; top: 0; }
     main .mainbox .text_box { top: 90px; padding: 0 16px; }
     main .mainbox .text_box h2 { font-size: 20px; }
     main .mainbox .text_box p { font-size: 12px; margin-top: 8px; }
+    main .mainbox .text_box .glow-btn{font-size: 12px;}
 
     .section1 { padding: 24px 16px; }
     .section1 .reservation_wrap { gap: 16px; }

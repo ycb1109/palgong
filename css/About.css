@@ -844,16 +844,30 @@ footer img {
     .section2 span { font-size: 14px; margin-bottom: 10px; }
     .section2 p { font-size: 12px; line-height: 1.6; margin-bottom: 20px; word-break: keep-all; }
 
-    .section3 { position: relative; padding: 30px 16px; margin: 0 auto; }
+    .section3 { position: relative; padding: 30px 30px 16px 16px; margin: 0 auto; }
     .section3 h2 { font-size: 18px; margin-bottom: 20px; }
     .section3 .allbox { display: none; width: 100%; max-width: 280px; height: 340px; margin: 0 auto; border-radius: 8px; }
     .section3 .allbox:first-of-type, .section3 .allbox.active { display: block !important; }
 
     .section4 { margin-top: 40px; padding: 30px 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 10px; }
 
-    .section5 { width: 100% !important; margin: 30px auto !important; padding: 0 16px !important; gap: 30px !important; display: flex !important; flex-direction: column !important; }
+    .section5 { width: 100% !important; margin: 30px auto !important; padding: 60px 16px !important; gap: 60px !important; display: flex !important; flex-direction: column !important; }
     .section5 .topbox, .section5 .bottombox { display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: flex-start !important; gap: 12px !important; width: 100% !important; }
     .section5 .topbox_left, .section5 .topbox_right, .section5 .bottombox_left, .section5 .bottombox_right { width: 50% !important; flex: 1 !important; min-width: 0 !important; box-sizing: border-box !important; }
+
+    .section5 .topbox_left h3{ font-size: 14px;}
+    .section5 .topbox_left p{ font-size: 18px;}
+    .section5 .topbox_left span{ font-size: 14px;}
+    .section5 .topbox_right p{font-size: 18px;}
+    .section5 .topbox_right span{font-size: 14px;}
+    .section5 .topbox_right h4{font-size: 14px;}
+
+    .section5 .bottombox_right h3{ font-size: 14px;}
+    .section5 .bottombox_right p{ font-size: 18px;}
+    .section5 .bottombox_right span{ font-size: 14px;}
+    .section5 .bottombox_left p{font-size: 18px;}
+    .section5 .bottombox_left span{font-size: 14px;}
+    .section5 .bottombox_left h4{font-size: 14px;}
 
     .section6 { min-height: 180px; padding: 30px 16px; }
     .section6 p { font-size: 16px; }
