@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="script/main.js">
     <script src="script/jquery-4.0.0.min.js"></script>
     <script src="script/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -26,94 +25,125 @@
 
     <!-- 인터랙션 스크립트 -->
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. GSAP ScrollTrigger 플러그인 등록
+        gsap.registerPlugin(ScrollTrigger);
 
-      // 1. GSAP ScrollTrigger 플러그인 등록
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Section1: 카드 순차 등장 & 스케일 애니메이션
-      gsap.from(".section1 .s1 > *", {
-        scrollTrigger: { trigger: ".section1", start: "top 80%" },
-        y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
-      });
-      gsap.from(".card_item", {
-        scrollTrigger: { trigger: ".card_list", start: "top 85%" },
-        y: 80, opacity: 0, scale: 0.9, duration: 1.2, stagger: 0.15, ease: "back.out(1.7)"
-      });
-
-      // Section2: 코스 카드 지그재그 슬라이드
-      gsap.from(".section2 .s1", {
-        scrollTrigger: { trigger: ".section2", start: "top 75%" },
-        x: -60, opacity: 0, duration: 1.2, ease: "power3.out"
-      });
-      gsap.from(".course-card", {
-        scrollTrigger: { trigger: ".s1-1", start: "top 80%" },
-        x: 80, opacity: 0, duration: 1.2, stagger: 0.3, ease: "power3.out"
-      });
-
-      // Section3 & Section7: 카드 패널 양감 넘치는 등장
-      gsap.from(".section3 .card", {
-        scrollTrigger: { trigger: ".section3", start: "top 75%" },
-        y: 60, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
-      });
-      gsap.from(".section7 .s2 > div", {
-        scrollTrigger: { trigger: ".section7", start: "top 80%" },
-        y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
-      });
-
-      // 2. Top 버튼 스크롤 프로그레스 & Smooth Scroll 기능
-      const topBtn = document.getElementById("back-to-top");
-      const circle = document.querySelector('.progress-ring__circle');
-      const radius = circle.r.baseVal.value;
-      const circumference = 2 * Math.PI * radius;
-
-      circle.style.strokeDasharray = `${circumference} ${circumference}`;
-      circle.style.strokeDashoffset = circumference;
-
-      window.addEventListener("scroll", () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = scrollTop / docHeight;
-        
-        // 원형 게이지 채우기
-        const offset = circumference - (scrollPercent * circumference);
-        circle.style.strokeDashoffset = offset;
-
-        // 버튼 표시 여부
-        if (scrollTop > 400) {
-          topBtn.classList.add("show");
-        } else {
-          topBtn.classList.remove("show");
-        }
-
-
-        // 헤더스크롤변화//
-        window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
+        // Section1: 카드 순차 등장
+        gsap.from(".section1 .s1 > *", {
+          scrollTrigger: { trigger: ".section1", start: "top 80%" },
+          y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
         });
-        // 헤더스크롤변화//
-        
-        
+        gsap.from(".card_item", {
+          scrollTrigger: { trigger: ".card_list", start: "top 85%" },
+          y: 80, opacity: 0, scale: 0.9, duration: 1.2, stagger: 0.15, ease: "back.out(1.7)"
+        });
 
+        // Section2: 코스 카드 지그재그 슬라이드
+        gsap.from(".section2 .s1", {
+          scrollTrigger: { trigger: ".section2", start: "top 75%" },
+          x: -60, opacity: 0, duration: 1.2, ease: "power3.out"
+        });
+        gsap.from(".course-card", {
+          scrollTrigger: { trigger: ".s1-1", start: "top 80%" },
+          x: 80, opacity: 0, duration: 1.2, stagger: 0.3, ease: "power3.out"
+        });
+
+        // Section3 & Section7: 등장 애니메이션
+        gsap.from(".section3 .card", {
+          scrollTrigger: { trigger: ".section3", start: "top 75%" },
+          y: 60, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+        });
+        gsap.from(".section7 .s2 > div", {
+          scrollTrigger: { trigger: ".section7", start: "top 80%" },
+          y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+        });
+
+        // 2. Section1 프로그레스 바 및 카드 연동 슬라이드 기능
+        const cardItems = document.querySelectorAll(".card_item");
+        const progressFill = document.getElementById("progressFill");
+        const progressBar = document.getElementById("progressBar");
+
+        function updateSlider(index) {
+          cardItems.forEach((card, idx) => {
+            if (idx === index) {
+              card.classList.add("active");
+            } else {
+              card.classList.remove("active");
+            }
+          });
+          // 프로그레스 바 위치 업데이트 (카드 개수에 맞게 이동)
+          const stepPercent = 100 / cardItems.length;
+          if(progressFill) progressFill.style.left = `${stepPercent * index}%`;
+        }
+
+        // 카드 클릭 시 해당 카드로 전환 및 프로그레스 바 이동
+        cardItems.forEach((card, index) => {
+          card.addEventListener("click", () => {
+            updateSlider(index);
+          });
+        });
+
+        // 프로그레스 바 클릭 시 해당 카드로 위치 이동
+        if (progressBar) {
+          progressBar.addEventListener("click", (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const ratio = clickX / rect.width;
+            const targetIndex = Math.floor(ratio * cardItems.length);
+            const clampedIndex = Math.max(0, Math.min(cardItems.length - 1, targetIndex));
+            updateSlider(clampedIndex);
+          });
+        }
+
+        // 초기 위치 세팅
+        const activeIndex = Array.from(cardItems).findIndex(card => card.classList.contains("active"));
+        updateSlider(activeIndex !== -1 ? activeIndex : 0);
+
+        // 3. Top 버튼 스크롤 프로그레스 & Smooth Scroll 기능
+        const topBtn = document.getElementById("back-to-top");
+        const circle = document.querySelector('.progress-ring__circle');
+        const radius = circle ? circle.r.baseVal.value : 0;
+        const circumference = 2 * Math.PI * radius;
+
+        if (circle) {
+          circle.style.strokeDasharray = `${circumference} ${circumference}`;
+          circle.style.strokeDashoffset = circumference;
+        }
+
+        window.addEventListener("scroll", () => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+          
+          if (circle) {
+            const offset = circumference - (scrollPercent * circumference);
+            circle.style.strokeDashoffset = offset;
+          }
+
+          if (scrollTop > 400) {
+            topBtn.classList.add("show");
+          } else {
+            topBtn.classList.remove("show");
+          }
+
+          const header = document.querySelector("header");
+          if (scrollTop > 50) {
+              header.classList.add("scrolled");
+          } else {
+              header.classList.remove("scrolled");
+          }
+        });
+
+        topBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
       });
-      
-
-      // 클릭 시 Smooth Scroll
-      topBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        
-      });
-
-      
     </script>
      <!-- //scroll-button -->
 
 
-     
+
     <!-- header -->
      <header>
         <div class="menu">
@@ -150,7 +180,7 @@
                 <li>
                     <a href="#">예약하기</a>
                     <ul class="sub_menu">
-                        <li><a href="sub/About2.html">실시간예약</a></li>
+                        <li><a href="/sub/About2.html">실시간예약</a></li>
                         <li><a href="#">대기예약</a></li>
                         <li><a href="#">예약확인</a></li>
                         <li><a href="#">예약취소</a></li>
@@ -194,11 +224,40 @@
                 <p>편안함 속에서 라운드의 여운은 더 길어집니다.<br>
                     최고 수준의 클럽하우스와 골프호텔, 그 창 밖으로 펼쳐지는 바다를 느껴보세요.</p>
             </div>
+
+            <!-- 빠른 예약 바 (추가 부분) -->
+            <div class="quick_booking_bar">
+                <div class="booking_field">
+                    <label><i class="fa-regular fa-compass"></i> 코스 선택</label>
+                    <select>
+                        <option>전체 코스</option>
+                        <option>동봉 코스</option>
+                        <option>서봉 코스</option>
+                    </select>
+                </div>
+                <div class="booking_field">
+                    <label><i class="fa-regular fa-calendar"></i> 날짜 선택</label>
+                    <input type="date" value="2026-08-12">
+                </div>
+                <div class="booking_field">
+                    <label><i class="fa-regular fa-user"></i> 인원</label>
+                    <select>
+                        <option>4인 (1카트)</option>
+                        <option>3인</option>
+                        <option>2인</option>
+                    </select>
+                </div>
+                <button type="button" class="booking_submit">
+                    <span>예약하기</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            <!-- //빠른 예약 바 -->
         </div>
     </section>
     <!-- //main -->
 
-    <!-- seciotn1 -->
+    <!-- section1 -->
     <section class="section1">
         <div class="s1">
             <h2>DONGBONG COURSE HOLE</h2>
@@ -206,7 +265,6 @@
             <p>동봉코스의 빼어난 경치는 플레이에 쾌감을 더하고 짜릿함 넘치는 스코어를 선사합니다.</p>
         </div>
         <div class="s2">
-            <!-- 이미지 리스트 영역 -->
             <div class="card_list">
                 <div class="card_item">
                     <img src="image/5.jpg" alt="5">
@@ -226,12 +284,10 @@
             </div>
         </div>
         <div class="progress_bar_wrap" id="progressBar">
-        <div class="progress_bar_fill" id="progressFill"></div>
+            <div class="progress_bar_fill" id="progressFill"></div>
         </div>
     </section>
-    <!-- //seciotn -->
-
-
+    <!-- //section1 -->
 
     <!-- section2 -->
      <section class="section2">
@@ -242,36 +298,32 @@
             <p>자연과 사람, 그리고 품격이 함께하는 곳</p>
         </div>
         <div class="s1-1">
-            <!-- 동봉 코스 카드 -->
             <div class="course-card">
                 <div class="card-image">
-                <img src="image/7.jpg" alt="7">
-            </div>
-
-            <div class="card-content">
-                <h3 class="course-title">DONGBONG COURSE</h3>
-                <p class="course-desc">
-                아름다운 수림 그리고 호수 등 남성적인<br>
-                동봉코스에서 계곡넘기기, 연못 넘기기<br>
-                등 다양한 형태의 라운딩을 즐길 수 있다.
-                </p>
+                    <img src="image/7.jpg" alt="7">
+                </div>
+                <div class="card-content">
+                    <h3 class="course-title">DONGBONG COURSE</h3>
+                    <p class="course-desc">
+                    아름다운 수림 그리고 호수 등 남성적인<br>
+                    동봉코스에서 계곡넘기기, 연못 넘기기<br>
+                    등 다양한 형태의 라운딩을 즐길 수 있다.
+                    </p>
                 </div>
             </div>
 
-            <!-- 서봉 코스 카드 -->
             <div class="course-card">
                 <div class="card-image">
-                <img src="image/8.png" alt="8">
+                    <img src="image/8.png" alt="8">
                 </div>
-
-            <div class="card-content">
-                <h3 class="course-title">SEOBONG COURSE</h3>
-                <p class="course-desc">
-                    평탄하게 넓게 펼쳐진 페어웨이와 스<br>
-                    릴있고 무아함과 난이도를 함께 갖춘<br>
-                    여성적인 코스이다.
-                </p>
-            </div>
+                <div class="card-content">
+                    <h3 class="course-title">SEOBONG COURSE</h3>
+                    <p class="course-desc">
+                        평탄하게 넓게 펼쳐진 페어웨이와 스<br>
+                        릴있고 무아함과 난이도를 함께 갖춘<br>
+                        여성적인 코스이다.
+                    </p>
+                </div>
            </div>
         </div>
     </section>
@@ -324,8 +376,6 @@
      </section>
     <!-- //section3 -->
 
-
-     
      <!-- section4 -->
       <section class="section4">
         <div>
@@ -348,11 +398,8 @@
                 <img src="image/12.jpg" alt="12">
             </div>
         </div>
-
     </section>
     <!-- //section4 --> 
-
-
 
      <!-- section5 -->
       <section class="section5">
@@ -388,7 +435,6 @@
         </div>
       </section>
      <!-- //section5 -->
-
 
      <!-- section6 -->
       <section class="section6">
@@ -444,7 +490,6 @@
     <!-- footer -->
     <footer>
         <div class="footer-inner">
-            <!-- 회사 및 사업자 정보 -->
             <div class="footer-info">
                 <div class="info-row">
                     <span>우경개발(주)</span>
@@ -462,7 +507,6 @@
             </div>
             </div>
 
-            <!-- 소셜 아이콘 영역 -->
             <div class="footer-icon">
                 <img src="icon/instagram.svg" alt="instagram">
                 <img src="icon/youtube.svg" alt="youtube">
@@ -471,10 +515,9 @@
             <a href="#"><img src="image/logo.png" alt="logo"></a>
         </div>
     </footer>
-    <!-- //footer// -->
+    <!-- //footer -->
 
-    <!--tab-->
-    <!-- 하단 탭 바 (tab-bar) -->
+    <!-- tab-bar -->
     <nav class="tab-bar">
         <a href="#" class="tab-item active">
             <img src="./icon/home.svg" alt="홈">
@@ -493,10 +536,7 @@
             <span>메뉴</span>
         </a>
     </nav>
-    <!--//tab-->
-
+    <!-- //tab-bar -->
 
 </body> 
 </html>
-
-

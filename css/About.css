@@ -777,18 +777,29 @@ footer img {
     .section2 p { font-size: 15px; line-height: 1.6; margin-bottom: 30px; }
     .section2 img { margin: 30px auto 0; max-width: 100%; }
 
-    .section3 { padding: 40px 30px; gap: 20px; }
-    .section3 h2 { font-size: 20px; margin-bottom: 30px; }
+    .section3 { padding: 50px 30px; gap: 20px; }
+    .section3 h2 { font-size: 20px; margin-bottom: 10px; }
     .section3 .allbox { width: calc(50% - 10px); height: 320px; }
+    .section3 .allbox span{ letter-spacing: 0.05em; }
     .section3 .allbox:nth-child(even) { margin-top: 0 !important; }
 
-    .section4 { margin-top: 60px; padding: 35px 20px; }
+    .section4 { margin-top: 150px; padding: 35px 20px; margin-bottom:100px; }
     .section4 .box img { height: 32px; margin-bottom: 10px; }
     .section4 .box h3 { font-size: 16px; }
     .section4 .box p { font-size: 14px; }
 
-    .section5 { margin: 60px auto; padding: 0 30px; gap: 60px; }
+    .section5 { margin: 100px auto; padding: 50px 30px; gap: 100px; }
     .section5 .topbox, .section5 .bottombox { gap: 30px; }
+    .section5 .topbox_left h3{ font-size: 18px;}
+    .section5 .topbox_left p{ font-size: 20px;}
+    .section5 .topbox_left span{ font-size: 18px;}
+    .section5 .topbox_right p{font-size: 20px;}
+
+    .section5 .bottombox_right h3{ font-size: 18px;}
+    .section5 .bottombox_right p{ font-size: 20px;}
+    .section5 .bottombox_right span{ font-size: 18px;}
+    .section5 .bottombox_left p{font-size: 20px;}
+
     .section5 .topbox_left, .section5 .bottombox_right { width: 50%; }
     .section5 .topbox_right, .section5 .bottombox_left { width: 50%; padding: 24px; }
 
