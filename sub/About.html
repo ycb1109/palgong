@@ -1,8 +1,12 @@
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - PALGONG COUNTRY CLUB</title>
+    <title>팔공컨트리클럽</title>
+    <link rel="shortcut icon" href="../image/fa.png" type="favicon">
+
+
     <link rel="stylesheet" href="../css/About.css">
     <link rel="shortcut icon" href="favicon/favicon-16x16.png" type="image/x-icon">
     <script src="script/jquery-4.0.0.min.js"></script>
@@ -124,7 +128,7 @@
     <!-- section3 -->
     <section class="section3">
         <h2>대구의 자랑 명문코스</h2>
-        <div class="allbox">
+        <div class="allbox active">
             <img src="../image/About1/3.avif" alt="3">
             <p>동봉코스</p>
             <span>아름다운 수림, 그리고 동수<br>다양한 형태의 라운딩 코스</span>
@@ -279,18 +283,52 @@
     <script>
       gsap.registerPlugin(ScrollTrigger);
 
-      // Scroll Trigger 애니메이션
-      gsap.from(".section1 .s1 > *", {
-        scrollTrigger: { trigger: ".section1", start: "top 80%" },
-        y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
-      });
+      // 데스크톱 이상에서만 GSAP 애니메이션 실행
+      if (window.innerWidth > 575) {
+        gsap.from(".section1 .s1 > *", {
+          scrollTrigger: { trigger: ".section1", start: "top 80%" },
+          y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+        });
 
-      gsap.from(".section3 .allbox", {
-        scrollTrigger: { trigger: ".section3", start: "top 75%" },
-        y: 50, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out"
-      });
+        gsap.from(".section3 .allbox", {
+          scrollTrigger: { trigger: ".section3", start: "top 75%" },
+          y: 50, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out"
+        });
+      }
 
-      // Top 버튼 & 헤더 스크롤 이벤트 통합
+      // 575px 이하 모바일용 자동 슬라이드 제어 스크립트
+      let slideInterval = null;
+      let currentIndex = 0;
+
+      function startMobileSlide() {
+        const boxes = document.querySelectorAll('.section3 .allbox');
+        if (!boxes.length) return;
+
+        if (window.innerWidth <= 575) {
+          if (!slideInterval) {
+            slideInterval = setInterval(() => {
+              boxes[currentIndex].classList.remove('active');
+              currentIndex = (currentIndex + 1) % boxes.length;
+              boxes[currentIndex].classList.add('active');
+            }, 3000); // 3초 간격 전환
+          }
+        } else {
+          if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+            boxes.forEach(box => {
+              box.classList.remove('active');
+              box.style.display = '';
+              box.style.opacity = '';
+            });
+          }
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', startMobileSlide);
+      window.addEventListener('resize', startMobileSlide);
+
+      // Top 버튼 & 헤더 스크롤 이벤트
       const topBtn = document.getElementById("back-to-top");
       const circle = document.querySelector('.progress-ring__circle');
       const header = document.querySelector("header");
@@ -308,14 +346,12 @@
           
           circle.style.strokeDashoffset = circumference - (scrollPercent * circumference);
 
-          // Top 버튼 표시 제어
           if (scrollTop > 400) {
             topBtn.classList.add("show");
           } else {
             topBtn.classList.remove("show");
           }
 
-          // 헤더 변형
           if (scrollTop > 50) {
             header.classList.add("scrolled");
           } else {

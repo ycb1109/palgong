@@ -378,7 +378,7 @@ main .mainbox .text_box p {
     height: 380px;
     overflow: hidden;
     border-radius: 8px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease-in-out;
 }
 
 .section3 .allbox:nth-child(even) {
@@ -572,8 +572,8 @@ main .mainbox .text_box p {
 .section5 .bottombox_left > img {
     width: 100%;
     max-width: 100%;
-    height: 240px; /* 👈 높이를 동일하게 고정 (원하는 높이 px로 조절 가능) */
-    object-fit: cover; /* 👈 이미지가 찌그러지지 않고 크기에 맞게 잘림 */
+    height: 240px;
+    object-fit: cover;
     display: block;
     margin-bottom: 24px;
     border-radius: 4px;
@@ -813,7 +813,7 @@ footer img {
 }
 
 /* ==========================================
-   Responsive: Mobile (Max 575px)
+   Responsive: Mobile (Max 575px) - 자동 슬라이드 수정 적용
    ========================================== */
 @media screen and (max-width: 575px) {
     .top-btn { bottom: 80px; right: 20px; width: 44px; height: 44px; }
@@ -839,25 +839,40 @@ footer img {
     .section1 { padding: 20px 0; }
     .tab_wrap { margin: 10px auto; padding: 0 16px; }
 
-    .section2 { padding: 30px 16px; }
     .section2 h2 { font-size: 18px; margin-bottom: 10px; }
-    .section2 span { font-size: 14px; margin-bottom: 10px; }
-    .section2 p { font-size: 12px; line-height: 1.6; margin-bottom: 20px; word-break: keep-all; }
+    .section2 span { font-size: 16px; margin-bottom: 10px; }
+    .section2 p { font-size: 15px; line-height: 1.6; margin-bottom: 20px; word-break: keep-all; }
 
-    .section3 { position: relative; padding: 30px 30px 16px 16px; margin: 0 auto; }
-    .section3 h2 { font-size: 18px; margin-bottom: 20px; }
-    .section3 .allbox { display: none; width: 100%; max-width: 280px; height: 340px; margin: 0 auto; border-radius: 8px; }
-    .section3 .allbox:first-of-type, .section3 .allbox.active { display: block !important; }
+    /* Section 3 슬라이더 모바일 전용 스타일 */
+    .section3 { position: relative; padding: 0px 16px 80px 16px; margin: 0 auto; }
+    .section3 h2 { font-size: 18px; margin-bottom: 10px; }
+    .section3 .allbox { 
+        display: none; 
+        width: 100%; 
+        max-width: 320px; 
+        height: 380px; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+    }
+    .section3 .allbox.active { 
+        display: block !important; 
+        opacity: 1 !important; 
+    }
+    .section3 .allbox p { font-size: 18px; }
+    .section3 .allbox span { font-size: 16px; }
 
     .section4 { margin-top: 40px; padding: 30px 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 10px; }
 
-    .section5 { width: 100% !important; margin: 30px auto !important; padding: 60px 16px !important; gap: 60px !important; display: flex !important; flex-direction: column !important; }
+    .section5 { width: 100% !important; margin: 30px auto !important; padding: 60px 16px !important; gap: 100px !important; display: flex !important; flex-direction: column !important; }
     .section5 .topbox, .section5 .bottombox { display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: flex-start !important; gap: 12px !important; width: 100% !important; }
     .section5 .topbox_left, .section5 .topbox_right, .section5 .bottombox_left, .section5 .bottombox_right { width: 50% !important; flex: 1 !important; min-width: 0 !important; box-sizing: border-box !important; }
 
     .section5 .topbox_left h3{ font-size: 14px;}
     .section5 .topbox_left p{ font-size: 18px;}
     .section5 .topbox_left span{ font-size: 14px;}
+    .section5 .topbox_left h4{ font-size: 14px;}
     .section5 .topbox_right p{font-size: 18px;}
     .section5 .topbox_right span{font-size: 14px;}
     .section5 .topbox_right h4{font-size: 14px;}
@@ -868,8 +883,9 @@ footer img {
     .section5 .bottombox_left p{font-size: 18px;}
     .section5 .bottombox_left span{font-size: 14px;}
     .section5 .bottombox_left h4{font-size: 14px;}
+    .section5 .bottombox_right h4{font-size: 14px;}
 
-    .section6 { min-height: 180px; padding: 30px 16px; }
+    .section6 { margin-top: 100px; min-height: 180px; padding: 30px 16px; }
     .section6 p { font-size: 16px; }
     .section6 span { font-size: 12px; margin-bottom: 16px; word-break: keep-all; }
     .section6 button { padding: 8px 20px; font-size: 12px; }
