@@ -42,15 +42,14 @@ img{
 }
 
 /* scroll-button */
-/* Top 버튼 디자인 (글래스모피즘 + 글로우) */
 .top-btn {
   position: fixed;
-  bottom: 90px; /* 모바일 하단 탭바 레이아웃 고려 */
+  bottom: 90px;
   right: 30px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(11, 32, 63, 0.85); /* 브랜드 메인 컬러 반영 */
+  background: rgba(11, 32, 63, 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
@@ -78,7 +77,6 @@ img{
   background: #0B203F;
 }
 
-/* 화살표 및 원형 진행률(Progress Ring) */
 .top-btn .arrow {
   font-size: 18px;
   font-weight: bold;
@@ -99,12 +97,11 @@ img{
 
 .progress-ring__circle {
   transition: stroke-dashoffset 0.1s linear;
-  stroke: #ffffff; /* 진행 바 색상 */
+  stroke: #ffffff;
 }
 /* //scroll-button */
 
 /* header */
-/* heder스크롤변화 */
 header {
   transition: all 0.3s ease;
 }
@@ -114,27 +111,24 @@ header.scrolled {
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
-/* //heder스크롤변화 */
 
 header{
     width: 100%;
     height: 64px;
     background-color: #0B203F;
     position: fixed;
-    z-index: 9999; /* 🔥 숫자값이 높을수록 위로 올라옵니다 */
-    
+    z-index: 9999;
 }
 header .menu{
     margin: auto 50px;
     height: 100%;
     display: flex;
     justify-content: space-between;
-
 }
 header .menu img{
-  height: 40px; /* 로고가 들어갈 실제 높이 */
-  width: auto;  /* 가로 비율 자동 유지 */
-  object-fit: contain; /* 이미지 비율 유지 */
+  height: 40px;
+  width: auto;
+  object-fit: contain;
   align-self: center;
 }
 header .menu .ham{
@@ -146,31 +140,29 @@ header .menu .nav{
     align-items: center;
     flex-direction:row-reverse;
 }
-/* 1 depth (메인 메뉴) */
 header .menu .nav ul.gnb {
     display: flex;
     gap: 40px;
     margin: 0;
 }
 header .menu .nav ul.gnb > li {
-    position: relative; /* 서브메뉴 위치 기준점 설정 */
+    position: relative;
     font-family: "noto_r";
     color: white;
     font-size: 16px;
     cursor: pointer;
-    line-height: 64px; /* 헤더 높이와 맞춰 수직 중앙 정렬 */
+    line-height: 64px;
 }
 
-/* 2 depth (하위 서브 메뉴) */
 header .menu .nav ul.sub_menu {
-    display: none; /* 기본 상태: 숨김 */
+    display: none;
     position: absolute;
-    top: 64px; /* 헤더 바로 아래 위치 */
+    top: 64px;
     left: 50%;
-    transform: translateX(-50%); /* 메뉴 중앙 정렬 */
-    width: 140px; /* 서브메뉴 너비 지정 */
-    background-color: rgba(255, 255, 255, 0.85); /* 반투명 배경 */
-    backdrop-filter: blur(4px); /* 배경 흐림 효과 */
+    transform: translateX(-50%);
+    width: 140px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
     padding: 15px 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     flex-direction: column;
@@ -179,7 +171,7 @@ header .menu .nav ul.sub_menu {
 }
 
 header .menu .nav ul.sub_menu li {
-    line-height: 2; /* 하위 메뉴 간격 조절 */
+    line-height: 2;
 }
 
 header .menu .nav ul.sub_menu li a {
@@ -195,7 +187,6 @@ header .menu .nav ul.sub_menu li a:hover {
     font-weight: bold;
 }
 
-/* 🔥 핵심: 상위 li에 마우스 올렸을 때 서브메뉴 표시 */
 header .menu .nav ul.gnb > li:hover .sub_menu {
     display: flex;
 }
@@ -213,7 +204,6 @@ header .menu ul li{
 }
 /* //header */
 
-
 /* main */
 .main {
   width: 100%;
@@ -222,7 +212,6 @@ header .menu ul li{
   overflow: hidden;
 }
 
-/* 배경 이미지: 전체 화면에 꽉 차게 설정 */
 .main .main_img {
   width: 100%;
   height: 100%;
@@ -232,7 +221,7 @@ header .menu ul li{
 }
 .main .main_img .text_box {
   position: absolute;
-  top: 45%;                 /* 예약 바 추가에 맞춰 중앙 정렬 미세 조정 */
+  top: 45%;
   transform: translateY(-50%);
   left: 200px;
   z-index: 10;
@@ -271,7 +260,6 @@ body, html {
   font-size: 18px;
 }
 
-/* 빠른 예약 바 (Quick Booking Bar) 추가 스타일 */
 .quick_booking_bar {
     position: absolute;
     bottom: 50px;
@@ -365,7 +353,6 @@ body, html {
 }
 /* //main */
 
-
 /* body_all section size*/
 body > section:not(.main):not(.section4){
     width: var(--main-width);
@@ -383,7 +370,6 @@ body > section.section7{
     padding: unset;
 }
 /* //body_all section size*/
-
 
 /* section1 */
 .section1{
@@ -458,7 +444,6 @@ body > section.section7{
 }
 /* //section1 */
 
-
 /* section2 */
 .section2{
     height: 1000px;
@@ -529,7 +514,7 @@ body > section.section7{
 
 .course-title {
     padding-top: 50px;
-    font-family:"noto_b";;
+    font-family:"noto_b";
     font-size: 22px;
     color: #0B203F;
     letter-spacing: 0.8px;
@@ -546,17 +531,16 @@ body > section.section7{
 }
 /* //section2 */
 
-
 /* section3 */
-.section3 .card, .section7 .s2 > div {
+.section3 .card {
   overflow: hidden;
 }
 
-.section3 .card img, .section7 .s2 > div img {
+.section3 .card img {
   transition: transform 0.5s ease;
 }
 
-.section3 .card:hover img, .section7 .s2 > div:hover img {
+.section3 .card:hover img {
   transform: scale(1.08);
 }
 
@@ -669,7 +653,6 @@ body > section.section7{
 }
 /*//section3 */
 
-
 /* section4 */
 .section4{
     height: 472px;
@@ -742,7 +725,6 @@ body > section.section7{
 }
 /* //section4 */
 
-
 /* section5 */
 .section5 {
   min-width: 1400px;
@@ -772,10 +754,9 @@ body > section.section7{
   font-weight: 700;
   color: #111111;
   line-height: 150%;
-  font-weight: 600;
+  font-weight: 580;
 }
 /* //section5 */
-
 
 /* section6 */
 .section6{
@@ -822,21 +803,19 @@ body > section.section7{
 }
 /* //section6 */
 
-
-/* section7 */
+/* section7  */
 .section7 {
   width: 100%;
   max-width: 1400px;
-  height: 940px;
-  margin: 0 auto;
-  padding: 80px 0;
-  margin-top: 200px;
+  height: 1000px;
+  margin: 250px auto 100px;
   letter-spacing: 0.05em;
+  
 }
 .section7 .s1 {
+  margin-top: 120px;
   text-align: center;
-  margin-bottom: 100px;
-  margin-top: 100px;
+  margin-bottom: 60px;
 }
 .section7 .s1 h1 {
   font-family: "cinzel-b"; 
@@ -844,60 +823,95 @@ body > section.section7{
   display: inline-block;
   position: relative;
   margin: 0;
-  padding-bottom: 12px;
   letter-spacing: 2px;
+  color: #0B203F;
 }
 
 .section7 .s2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 70px;
+  gap: 30px;
 }
-.section7 .s2 > div {
-  position: relative;
-  width: 420px;
-  height: 180px;
-  border-radius: 20px;
+
+.news-card {
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
   overflow: hidden;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.20);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
-.section7 .s2 > div img {
-  position: absolute;
-  top: 0;
-  left: 0;
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.news-card .card-thumb {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.news-card .card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
-  cursor: pointer;
+  transition: transform 0.5s ease;
 }
-.section7 .s2 > div p,
-.section7 .s2 > div h2 {
-  position: relative;
+
+.news-card:hover .card-thumb img {
+  transform: scale(1.06);
+}
+
+.news-card .card-thumb .badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #0B203F;
+  color: #ffffff;
+  font-family: "noto_b", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 16px;
+  letter-spacing: 0.08em;
   z-index: 2;
+}
+
+.news-card .card-body {
+  padding: 20px 22px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #e0e0e0;
+  min-height: 95px;
+}
+
+.news-card .card-body h3 {
+  font-family: "noto_b", sans-serif;
+  font-size: 17px;
+  color: #111111;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.news-card .card-body p {
+  font-family: "noto_r", sans-serif;
+  font-size: 13px;
+  color: #888888;
   margin: 0;
-}
-
-.section7 .s2 > div p {
-  font-family: "noto_m";
-  font-size: 20px;
-  font-weight: 580;
-  word-break: keep-all;
-}
-
-.section7 .s2 > div h2 {
-  font-family: "noto_r";
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 8px;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* //section7 */
-
 
 /* footer */
 footer{
@@ -963,20 +977,18 @@ footer img{
 }
 /* //footer */
 
-
 /* tab */
 .tab-bar {
   display: none;
 }
 /* //tab */
 
-
 /* ==========================================
    반응형 미디어 쿼리
    ========================================== */
 @media screen and (max-width: 1024px){
   .main, .section1, .section2, .section3, .section4, .section5, .section6, .section7 {
-    margin-bottom: 150px !important;
+    margin-bottom: 120px !important;
   }
   .section2 {
     display: flex !important;
@@ -1001,12 +1013,7 @@ footer img{
     align-items: center !important;
     gap: 40px !important;
   }
-  .section7 .s2 {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 24px !important;
-  }
-
+  
   * {
     box-sizing: border-box;
   }
@@ -1270,11 +1277,11 @@ footer img{
     max-width: 1024px;
     height: auto;
     margin-top: 80px;
-    padding: 0 40px 80px 40px;
+    padding: 0 40px;
   }
   .section7 .s1 {
     margin-top: 0;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
   .section7 .s1 h1 {
     font-size: 28px;
@@ -1283,17 +1290,9 @@ footer img{
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 20px !important;
-    margin-left: 0;
   }
-  .section7 .s2 > div {
-    width: 100%;
-    height: 120px;
-  }
-  .section7 .s2 p {
-    font-size: 20px;
-  }
-  .section7 .s2 h2 {
-    font-size: 18px;
+  .news-card .card-thumb {
+    height: 160px;
   }
 
   footer {
@@ -1336,10 +1335,10 @@ footer img{
     padding-bottom: 60px;
   }
 
-  body > section:not(.main):not(.section4) {
+  body > section:not(.main):not(.section2,.section4,.section7) {
     width: 100% !important;
     max-width: 575px !important;
-    margin: 100px auto 50px auto !important;
+    margin: 60px auto 40px auto !important;
     padding: 0 16px !important;
   }
 
@@ -1404,7 +1403,6 @@ footer img{
     line-height: 1.4;
   }
 
-  /* 모바일 모드 빠른 예약 바 */
   .quick_booking_bar {
     flex-direction: column;
     height: auto;
@@ -1518,7 +1516,6 @@ footer img{
     top: 20px !important;
     left: 20px !important;
     z-index: 2 !important;
-    
   }
   .card-content {
     position: absolute;
@@ -1541,11 +1538,8 @@ footer img{
     margin-left: -20px;
   }
 
-  /* ==========================================
-     Section 3 (모바일 카드 크기 및 이미지 고정)
-     ========================================== */
   .section3 {
-    top: 0 !important; /* 위쪽 여백 쏠림 방지 */
+    top: 0 !important;
     height: auto !important;
     padding: 0 16px !important;
   }
@@ -1568,21 +1562,19 @@ footer img{
     flex-direction: column !important;
     gap: 16px !important;
   }
-  /* 카드 컨테이너 고정 높이 및 유연성 확보 */
   .section3 .card-container .card {
     width: 100% !important;
     min-width: 0 !important;
-    height: 180px !important; /* 모든 카드 높이 통일 */
+    height: 180px !important;
     max-width: none !important;
     position: relative !important;
     overflow: hidden !important;
     border-radius: 8px !important;
   }
-  /* 이미지가 카드 크기에 맞춰 잘리도록 처리 */
   .section3 .card-container .card img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* 이미지 비율이 달라도 꽉 채우고 잘라냄 */
+    object-fit: cover !important;
     display: block !important;
   }
   .section3 .card-container .card .card_text {
@@ -1688,35 +1680,44 @@ footer img{
     margin: 0 !important;
   }
 
+  /* Section 7 모바일 스타일 */
   .section7 {
     width: 100% !important;
     height: auto !important;
-    margin-top: 0 !important;
+    margin-top: 40px !important;
     padding: 0 16px !important;
+   
+    
   }
   .section7 .s1 {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   .section7 .s1 h1 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .section7 .s2 {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
-    margin-left: 0;
+    gap: 12px !important;
   }
-  .section7 .s2 > div {
-    width: 100% !important;
-    height: 85px !important;
-    border-radius: 10px;
+  .news-card .card-thumb {
+    height: 110px;
   }
-  .section7 .s2 p {
-    font-size: 11px !important;
+  .news-card .card-thumb .badge {
+    font-size: 10px;
+    padding: 4px 10px;
   }
-  .section7 .s2 h2 {
-    font-size: 9px !important;
+  .news-card .card-body {
+    padding: 12px 10px;
+    min-height: auto;
+  }
+  .news-card .card-body h3 {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .news-card .card-body p {
+    font-size: 11px;
   }
 
   footer {

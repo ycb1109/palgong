@@ -56,7 +56,7 @@
           scrollTrigger: { trigger: ".section3", start: "top 75%" },
           y: 60, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
         });
-        gsap.from(".section7 .s2 > div", {
+        gsap.from(".section7 .news-card", {
           scrollTrigger: { trigger: ".section7", start: "top 80%" },
           y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
         });
@@ -144,8 +144,6 @@
     </script>
      <!-- //scroll-button -->
 
-
-
     <!-- header -->
      <header>
         <div class="menu">
@@ -227,7 +225,7 @@
                     최고 수준의 클럽하우스와 골프호텔, 그 창 밖으로 펼쳐지는 바다를 느껴보세요.</p>
             </div>
 
-            <!-- 빠른 예약 바 (추가 부분) -->
+            <!-- 빠른 예약 바 -->
             <div class="quick_booking_bar">
                 <div class="booking_field">
                     <label><i class="fa-regular fa-compass"></i> 코스 선택</label>
@@ -330,7 +328,6 @@
         </div>
     </section>
     <!-- //section2 -->
-
 
     <!-- section3 -->
      <section class="section3">
@@ -459,32 +456,65 @@
             <h1>CLUB NEWS</h1>
         </div>
         <div class="s2">
-            <div class="s2-1">
-                <img src="image/banner1.jpg" alt="banner1">
-                <p>프로상 신규 입점업체 안내</p>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">NOTICE</span>
+                    <img src="image/banner1.jpg" alt="banner1">
+                </div>
+                <div class="card-body">
+                    <h3>프로상 신규 입점업체 안내</h3>
+                    <p>새롭게 입점하는 브랜드를 소개합니다.</p>
+                </div>
             </div>
-            <div class="s2-2">
-                <img src="image/banner2.jpg" alt="banner2">
-                <p>홈페이지 서버 점검안내</p>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">NOTICE</span>
+                    <img src="image/banner2.jpg" alt="banner2">
+                </div>
+                <div class="card-body">
+                    <h3>홈페이지 서버 점검안내</h3>
+                    <p>보다 안정적인 서비스 제공을 위한 서버 점검을 진행합니다.</p>
+                </div>
             </div>
-            <div class="s2-3">
-                <img src="image/banner3.jpg" alt="banner3">
-                <p>7월 입장요금 안내</p>
-                <h2>시행기간 2026년7월1일~7월31일</h2>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">INFORMATION</span>
+                    <img src="image/banner3.jpg" alt="banner3">
+                </div>
+                <div class="card-body">
+                    <h3>7월 입장요금 안내</h3>
+                    <p>시행기간 2026년7월1일~7월31일</p>
+                </div>
             </div>
-            <div class="s2-4">
-                <img src="image/banner4.jpg" alt="banner4">
-                <p>7월 공휴일 예약안내</p>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">RESERVATION</span>
+                    <img src="image/banner4.jpg" alt="banner4">
+                </div>
+                <div class="card-body">
+                    <h3>7월 공휴일 예약안내</h3>
+                    <p>공휴일 예약 일정을 확인해 주세요.</p>
+                </div>
             </div>
-            <div class="s2-5">
-                <img src="image/banner5.jpg" alt="banner5">
-                <p>팔공CC 촉서기<br>
-                특별 할인 이벤트</p>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">EVENT</span>
+                    <img src="image/banner5.jpg" alt="banner5">
+                </div>
+                <div class="card-body">
+                    <h3>팔공CC 혹서기 특별 할인 이벤트</h3>
+                    <p>무더운 여름, 시원한 혜택을 만나보세요.</p>
+                </div>
             </div>
-            <div class="s2-6">
-                <img src="image/banner6.jpg" alt="banner6">
-                <p>6월 입장요금 안내</p>
-                <h2>시행기간 2026년6월1일~6월30일</h2>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">INFORMATION</span>
+                    <img src="image/banner6.jpg" alt="banner6">
+                </div>
+                <div class="card-body">
+                    <h3>6월 입장요금 안내</h3>
+                    <p>시행기간 2026년6월1일~6월30일</p>
+                </div>
             </div>
         </div>
       </section>
