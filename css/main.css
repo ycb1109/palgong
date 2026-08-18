@@ -262,7 +262,7 @@ body, html {
 
 .quick_booking_bar {
     position: absolute;
-    bottom: 50px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -444,6 +444,8 @@ body > section.section7{
 }
 /* //section1 */
 
+
+
 /* section2 */
 .section2{
     height: 1000px;
@@ -485,7 +487,7 @@ body > section.section7{
   width: 856px;
   height: 320px;
   background-color: #ffffff;
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
   margin-left: 193px;
@@ -530,6 +532,8 @@ body > section.section7{
     letter-spacing: -0.2px;
 }
 /* //section2 */
+
+
 
 /* section3 */
 .section3 .card {
@@ -759,7 +763,7 @@ body > section.section7{
 /* //section5 */
 
 /* section6 */
-.section6{
+/* .section6{
     display: flex;
     max-width: 1400px;
     margin: 0 auto;
@@ -799,7 +803,7 @@ body > section.section7{
     width: 100% !important;
     height: 100% !important;
     border: none;
-}
+} */
 /* //section6 */
 
 /* section7  */
@@ -809,10 +813,9 @@ body > section.section7{
   height: 1000px;
   margin: 250px auto 100px;
   letter-spacing: 0.05em;
-  
+
 }
 .section7 .s1 {
-  margin-top: 120px;
   text-align: center;
   margin-bottom:40px;
 }
