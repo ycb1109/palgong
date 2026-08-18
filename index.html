@@ -11,6 +11,7 @@
     <script src="script/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Swiper CSS & JS -->
     <link rel="stylesheet" href="script/swiper-bundle.min.css">
     <script src="script/swiper-bundle.min.js"></script>
 </head>
@@ -39,10 +40,6 @@
           scrollTrigger: { trigger: ".section1", start: "top 80%" },
           y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
         });
-        gsap.from(".card_item", {
-          scrollTrigger: { trigger: ".card_list", start: "top 85%" },
-          y: 80, opacity: 0, scale: 0.9, duration: 1.2, stagger: 0.15, ease: "back.out(1.7)"
-        });
 
         // Section2: 코스 카드 지그재그 슬라이드
         gsap.from(".section2 .s1", {
@@ -64,46 +61,50 @@
           y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
         });
 
-        // 2. Section1 프로그레스 바 및 카드 연동 슬라이드 기능
-        const cardItems = document.querySelectorAll(".card_item");
+        // 2. Section1 Swiper 초기화 및 프로그레스 바 연동
+        const totalSlides = document.querySelectorAll('.section1Swiper .swiper-slide').length;
         const progressFill = document.getElementById("progressFill");
         const progressBar = document.getElementById("progressBar");
 
-        function updateSlider(index) {
-          cardItems.forEach((card, idx) => {
-            if (idx === index) {
-              card.classList.add("active");
-            } else {
-              card.classList.remove("active");
+        const section1Swiper = new Swiper('.section1Swiper', {
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          spaceBetween: 30,
+          loop: false,
+          initialSlide: 2,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          on: {
+            init: function () {
+              updateProgress(this.activeIndex);
+            },
+            slideChange: function () {
+              updateProgress(this.activeIndex);
             }
-          });
-          // 프로그레스 바 위치 업데이트 (카드 개수에 맞게 이동)
-          const stepPercent = 100 / cardItems.length;
-          if(progressFill) progressFill.style.left = `${stepPercent * index}%`;
-        }
-
-        // 카드 클릭 시 해당 카드로 전환 및 프로그레스 바 이동
-        cardItems.forEach((card, index) => {
-          card.addEventListener("click", () => {
-            updateSlider(index);
-          });
+          }
         });
 
-        // 프로그레스 바 클릭 시 해당 카드로 위치 이동
+        function updateProgress(index) {
+          if (progressFill && totalSlides > 0) {
+            const stepPercent = 100 / totalSlides;
+            progressFill.style.width = `${stepPercent}%`;
+            progressFill.style.left = `${stepPercent * index}%`;
+          }
+        }
+
+        // 프로그레스 바 클릭 시 해당 슬라이드로 이동
         if (progressBar) {
           progressBar.addEventListener("click", (e) => {
             const rect = progressBar.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
             const ratio = clickX / rect.width;
-            const targetIndex = Math.floor(ratio * cardItems.length);
-            const clampedIndex = Math.max(0, Math.min(cardItems.length - 1, targetIndex));
-            updateSlider(clampedIndex);
+            const targetIndex = Math.floor(ratio * totalSlides);
+            const clampedIndex = Math.max(0, Math.min(totalSlides - 1, targetIndex));
+            section1Swiper.slideTo(clampedIndex);
           });
         }
-
-        // 초기 위치 세팅
-        const activeIndex = Array.from(cardItems).findIndex(card => card.classList.contains("active"));
-        updateSlider(activeIndex !== -1 ? activeIndex : 0);
 
         // 3. Top 버튼 스크롤 프로그레스 & Smooth Scroll 기능
         const topBtn = document.getElementById("back-to-top");
@@ -268,26 +269,17 @@
             <p>동봉코스의 빼어난 경치는 플레이에 쾌감을 더하고 짜릿함 넘치는 스코어를 선사합니다.</p>
         </div>
         <div class="s2">
-            <div class="card_list">
-                <div class="card_item">
-                    <img src="image/5.jpg" alt="5">
+            <div class="swiper section1Swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="image/5.jpg" alt="5"></div>
+                    <div class="swiper-slide"><img src="image/4.jpg" alt="4"></div>
+                    <div class="swiper-slide"><img src="image/1.jpg" alt="1"></div>
+                    <div class="swiper-slide"><img src="image/2.jpg" alt="2"></div>
+                    <div class="swiper-slide"><img src="image/3.jpg" alt="3"></div>
                 </div>
-                <div class="card_item">
-                    <img src="image/4.jpg" alt="4">
-                </div>
-                <div class="card_item active">
-                    <img src="image/1.jpg" alt="1">
-                </div>
-                <div class="card_item">
-                    <img src="image/2.jpg" alt="2">
-                </div>
-                <div class="card_item">
-                    <img src="image/3.jpg" alt="3">
-                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-        </div>
-        <div class="progress_bar_wrap" id="progressBar">
-            <div class="progress_bar_fill" id="progressFill"></div>
         </div>
     </section>
     <!-- //section1 -->
@@ -438,20 +430,6 @@
         </div>
       </section>
      <!-- //section5 -->
-
-     <!-- section6 -->
-      <!-- <section class="section6">
-        <div class="s1">
-            <h1>SERVICE<br>
-                DETAILS</h1>
-            <p>팔공 CC만의 특별한 서비스를 경험해보세요.<br>
-                고객님의 완벽한 골프 여행을 위해 최선을 다하겠습니다.</p>
-        </div>
-        <div class="s2">
-            <iframe width="1337" height="752" src="https://www.youtube.com/embed/dN-ngM7pBn0" title="팔공 CC IN 코스공략. 라운드전 한번에 파악하기." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </section> -->
-     <!-- //section6 -->
 
      <!-- section7 -->
       <section class="section7">
