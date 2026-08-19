@@ -449,93 +449,141 @@ body > section.section7{
 .section1Swiper .swiper-button-next {
     right: 20px;
 }
-
-
 /* //section1 */
 
-/* section2 */
-.section2{
-    height: 1000px;
+/* section2 (Figma 피그마 디자인 반영) */
+.section2 {
+    min-height: 900px;
     margin: 0 auto;
+    padding: 120px 0;
     display: flex;
-    flex: 0 0 280px;
+    justify-content: space-between;
+    gap: 60px;
 }
-.section2 .s1 h3{
+
+.section2 .s1 {
+    flex: 0 0 300px;
+}
+
+.section2 .s1 h3 {
     font-family: "cinzel-b"; 
-    font-size: 20px;
+    font-size: 18px;
     line-height: 120%;
     letter-spacing: 0.05em;
-    color:#969696;
-    margin-bottom: 40px;
+    color: #969696;
+    margin-bottom: 25px;
 }
-.section2 .s1 h2{
+
+.section2 .s1 h2 {
     font-family: "cinzel-b"; 
     font-size: 36px;
-    line-height: 120%;
+    line-height: 1.25;
     letter-spacing: 0.05em;
-    margin-bottom: 30px;
-    color:#0B203F;
+    margin-bottom: 25px;
+    color: #0B203F;
 }
-.section2 .s1 p{
+
+.section2 .s1 p {
     font-family: "noto_r";
-    font-size: 18px;
-    color:#585858;
+    font-size: 16px;
+    color: #585858;
+    line-height: 1.6;
 }
 
 .s1-1 {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 85px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    align-items: flex-end;
 }
 
 .course-card {
-  display: flex;
-  width: 856px;
-  height: 320px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
-  margin-left: 193px;
-  cursor: pointer;
+    position: relative;
+    width: 600px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
 }
 
-.card-image {
-  flex: 0 0 510px;
-  height: 320px;
+/* 동봉코스 (상단) - 오른쪽으로 여백을 두어 계단식 오프셋 적용 */
+.course-card.card-dongbong {
+    margin-right: 140px;
 }
 
-.card-image img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
+/* 서봉코스 (하단) - 우측 정렬 */
+.course-card.card-seobong {
+    margin-right: 0;
 }
 
-.card-content {
-  flex: 1;
-  padding: 0 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.course-card .card-image {
+    width: 480px;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.course-title {
-    padding-top: 50px;
-    font-family:"noto_b";
-    font-size: 22px;
+.course-card.card-dongbong .card-image {
+    margin-right: auto;
+}
+
+.course-card.card-seobong .card-image {
+    margin-left: auto;
+}
+
+.course-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.course-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* 흰색 텍스트 오버레이 박스 */
+.course-card .card-content {
+    position: absolute;
+    background-color: #ffffff;
+    padding: 26px 30px;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    z-index: 2;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 동봉코스: 이미지 우측 하단 오버레이 */
+.course-card.card-dongbong .card-content {
+    right: 0;
+    bottom: -15px;
+}
+
+/* 서봉코스: 이미지 좌측 하단 오버레이 */
+.course-card.card-seobong .card-content {
+    left: 0;
+    bottom: -15px;
+}
+
+.course-card .course-title {
+    padding-top: 0;
+    padding-bottom: 12px;
+    font-family: "noto_b", sans-serif;
+    font-size: 18px;
     color: #0B203F;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    padding-bottom: 25px;
 }
 
-.course-desc {
-    font-family: "noto_r";
-    font-size: 16px;
-    color: #000000;
-    line-height: 1.65;
+.course-card .course-desc {
+    font-family: "noto_r", sans-serif;
+    font-size: 13px;
+    color: #444444;
+    line-height: 1.6;
     letter-spacing: -0.2px;
 }
 /* //section2 */
@@ -774,7 +822,6 @@ body > section.section7{
   height: 1000px;
   margin: 250px auto 100px;
   letter-spacing: 0.05em;
-
 }
 .section7 .s1 {
   text-align: center;
@@ -956,7 +1003,8 @@ footer img{
   .section2 {
     display: flex !important;
     justify-content: space-between !important;
-    gap: 40px !important;
+    gap: 30px !important;
+    padding: 80px 40px !important;
   }
   .section3 .s1 {
     margin-bottom: 40px !important;
@@ -1062,18 +1110,9 @@ footer img{
   .section1Swiper .swiper-slide-active {
     transform: scale(1.1);
   }
-  .progress_bar_wrap {
-    margin-top: 40px;
-  }
 
-  .section2 {
-    height: auto;
-    padding: 80px 40px;
-    flex-direction: row;
-    gap: 40px;
-  }
   .section2 .s1 {
-    flex: 0 0 240px;
+    flex: 0 0 220px;
   }
   .section2 .s1 h3 {
     font-size: 16px;
@@ -1087,29 +1126,27 @@ footer img{
     font-size: 14px;
   }
   .s1-1 {
-    gap: 30px;
-    padding-left: 0;
+    gap: 50px;
   }
   .course-card {
     width: 100%;
-    height: 240px;
-    margin-left: 0;
   }
-  .card-image {
-    flex: 0 0 60%;
-    height: 100%;
+  .course-card.card-dongbong {
+    margin-right: 60px;
   }
-  .card-image img {
-    height: 100%;
+  .course-card .card-image {
+    width: 380px;
+    height: 220px;
   }
-  .course-title {
-    padding-top: 0;
-    font-size: 18px;
-    padding-bottom: 10px;
+  .course-card .card-content {
+    width: 250px;
+    padding: 20px;
   }
-  .course-desc {
-    font-size: 13px;
-    line-height: 1.5;
+  .course-card .course-title {
+    font-size: 16px;
+  }
+  .course-card .course-desc {
+    font-size: 12px;
   }
 
   .section3 {
@@ -1371,82 +1408,59 @@ footer img{
     line-height: 1.4;
   }
 
-  .progress_bar_wrap {
-    width: 160px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-  }
-
+  /* Section 2 모바일 스타일 */
   .section2 {
     height: auto !important;
+    min-height: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 30px !important;
+    padding: 40px 16px !important;
   }
   .section2 .s1 {
-    margin-bottom: 0px !important;
-  }
-  .section2 .s1-1 {
-    margin-top: -130px !important;
-    padding-left: 0 !important;
-    gap: 16px !important;
+    flex: none !important;
   }
   .section2 .s1 h3 {
     font-size: 12px;
     margin-bottom: 6px;
   }
   .section2 .s1 h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 22px;
+    margin-bottom: 10px;
   }
   .section2 .s1 p {
-    font-size: 12px;
+    font-size: 13px;
   }
-  .s1-1 {
-    width: 100%;
-    padding-left: 0;
-    gap: 16px;
+  .section2 .s1-1 {
+    gap: 40px !important;
+    align-items: stretch !important;
   }
   .course-card {
-   width: 100% !important;
-    position: relative !important;
-    display: block !important;
-  }
-  .card-image {
-   width: 100% !important;
-    height: 100% !important;
-    flex: none !important;
-  }
-  .course-card .card-image img {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-right: 0 !important;
+  }
+  .course-card .card-image {
+    width: 100% !important;
+    height: 200px !important;
   }
   .course-card .card-content {
-    position: absolute !important;
-    top: 20px !important;
-    left: 20px !important;
-    z-index: 2 !important;
+    position: relative !important;
+    width: calc(100% - 30px) !important;
+    margin: -30px auto 0 auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    padding: 16px 20px !important;
   }
-  .card-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px;
-    z-index: 2;
-  }
-  .course-title {
-    padding-top: 0;
-    font-size: 16px;
-    color: #0B203F;
+  .course-card .course-title {
+    font-size: 15px;
     padding-bottom: 6px;
   }
-  .course-desc {
-    display: none;
-  }
-  .section2 .s1-1 .card-content h3{
-    margin-top: -20px;
-    margin-left: -20px;
+  .course-card .course-desc {
+    font-size: 12px;
+    line-height: 1.5;
   }
 
   .section3 {
@@ -1550,7 +1564,6 @@ footer img{
     line-height: 1.3;
   }
 
-  /* Section 7 모바일 스타일 */
   .section7 {
     width: 100% !important;
     height: auto !important;
