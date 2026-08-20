@@ -1,11 +1,8 @@
-* {
-    --main-padding: 264px;
-    --main-width: 1400px;
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
 a {
     color: inherit;
     text-decoration: none;
@@ -45,9 +42,7 @@ img {
     src: url("../font/Cinzel-Bold.ttf");
 }
 
-/* ==========================================
-   Top 버튼 (글래스모피즘 + 진행률 링)
-   ========================================== */
+/* top버튼 */
 .top-btn {
   position: fixed;
   bottom: 90px;
@@ -105,10 +100,10 @@ img {
   transition: stroke-dashoffset 0.1s linear;
   stroke: #ffffff;
 }
+/* //top버튼 */
 
-/* ==========================================
-   Header & Scroll
-   ========================================== */
+
+/* header */
 header {
     width: 100%;
     height: 64px;
@@ -208,10 +203,10 @@ header .menu ul li {
     font-size: 16px;
     cursor: pointer;
 }
+/* //header */
 
-/* ==========================================
-   Main Visual & Shimmer Buttons
-   ========================================== */
+
+/* main */
 main {
     width: 100%;
     height: 574px;
@@ -295,10 +290,9 @@ main .mainbox .text_box p {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(125, 167, 130, 0.4);
 }
+/* //main */
 
-/* ==========================================
-   Section 1 (Reservation UI)
-   ========================================== */
+/* section1 */
 .section1 {
     width: 100%;
     padding: 80px 0;
@@ -542,71 +536,81 @@ main .mainbox .text_box p {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(11, 32, 63, 0.3);
 }
+/* //section1 */
 
-/* ==========================================
-   Footer
-   ========================================== */
-footer {
-    background-color: #183023;
-    color: #ffffff;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    height: 320px;
-    display: flex;
+
+/* footer */
+footer{
+  background-color: #0B203F;
+  color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .footer-inner {
-    width: var(--main-width);
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    padding-top: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 70px;
 }
 
 .info-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .info-row span {
-    display: inline-block;
+  display: inline-block;
+}
+footer .info_row_c span{
+  color:white;
 }
 
-footer .info_row_c span { color: white; }
+.copyright {
+  margin-top: 5px;
+  color: #b0ad9e;
+}
 
 .footer-icon {
-    gap: 15px;
-    display: flex;
-    justify-content: flex-start;
+  gap: 15px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .footer-icon a {
-    color: #d1cfc7;
-    width: 36px;
-    height: 36px;
-    border: 1px solid #d1cfc7;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
+  color: #d1cfc7;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d1cfc7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-footer img {
-    height: 40px;
-    object-fit: contain;
-    float: right;
+footer img{
+  height: 40px;
+  object-fit: contain;
+  float: right;
+  margin-bottom: 70px;
 }
+/* //footer */
 
-.tab-bar { display: none; }
 
-/* ==========================================
-   Responsive
-   ========================================== */
+/* tab */
+.tab-bar {
+  display: none;
+}
+/* //tab */
+
+
+
 @media screen and (max-width: 1024px) {
     header .menu { margin: 0 30px; }
     header .menu .nav { display: flex; }

@@ -1,11 +1,8 @@
-* {
-    --main-padding: 264px;
-    --main-width: 1400px;
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
 a {
     color: inherit;
     text-decoration: none;
@@ -44,9 +41,7 @@ img {
     src: url("../font/Cinzel-Bold.ttf");
 }
 
-/* ==========================================
-   Top 버튼 (글래스모피즘 + 스크롤 프로그레스 링)
-   ========================================== */
+/*top버튼*/
 .top-btn {
   position: fixed;
   bottom: 90px;
@@ -105,9 +100,7 @@ img {
   stroke: #ffffff;
 }
 
-/* ==========================================
-   Header & Scroll Effect
-   ========================================== */
+/* header */
 header {
     width: 100%;
     height: 64px;
@@ -208,9 +201,9 @@ header .menu ul li {
     cursor: pointer;
 }
 
-/* ==========================================
-   Main Visual
-   ========================================== */
+/* //header */
+
+/* main */
 main {
     width: 100%;
     height: 400px;
@@ -251,9 +244,10 @@ main .mainbox .text_box p {
     font-size: 24px;
 }
 
-/* ==========================================
-   Section 1 (Tabs)
-   ========================================== */
+/* //main */
+
+
+/* section1 */
 .section1 {
     width: 100%;
     padding: 40px 0;
@@ -303,10 +297,9 @@ main .mainbox .text_box p {
     color: #000;
     font-weight: bold;
 }
+/* //section1 */
 
-/* ==========================================
-   Section 2 (Overview)
-   ========================================== */
+/* section2 */
 .section2 {
     width: 100%;
     max-width: 1200px;
@@ -348,10 +341,9 @@ main .mainbox .text_box p {
     display: block;
     margin: 80px auto;
 }
+/* //section2 */
 
-/* ==========================================
-   Section 3 (Course Cards & Hover Animation)
-   ========================================== */
+/* section3 */
 .section3 {
     display: flex;
     flex-wrap: wrap;
@@ -394,7 +386,7 @@ main .mainbox .text_box p {
     transition: transform 0.5s ease;
 }
 
-/* 호버 시 3D 확대 및 부유 효과 */
+
 .section3 .allbox:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
@@ -438,9 +430,7 @@ main .mainbox .text_box p {
     opacity: 0.85;
 }
 
-/* ==========================================
-   Section 4 (Icon Bar)
-   ========================================== */
+/* section4 */
 .section4 {
     margin-top: 200px;
     width: 100%;
@@ -478,9 +468,10 @@ main .mainbox .text_box p {
     font-family: "noto_b";
 }
 
-/* ==========================================
-   Section 5 (About Club & Experience)
-   ========================================== */
+/* //section4 */
+
+
+/* section5 */
 .section5 {
     width: 100%;
     max-width: 1200px;
@@ -605,10 +596,10 @@ main .mainbox .text_box p {
     font-weight: 700;
     margin-top: 10px;
 }
+/* //section5 */
 
-/* ==========================================
-   Section 6 (CTA Banner & Shimmer Button)
-   ========================================== */
+
+/* section6 */
 .section6 {
     position: relative;
     display: flex;
@@ -685,75 +676,78 @@ main .mainbox .text_box p {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(24, 48, 35, 0.4);
 }
+/* //section6 */
 
-/* ==========================================
-   Footer
-   ========================================== */
-footer {
-    background-color: #183023;
-    color: #ffffff;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    height: 320px;
-    display: flex;
+
+/* footer */
+footer{
+  background-color: #0B203F;
+  color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .footer-inner {
-    width: var(--main-width);
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    padding-top: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 70px;
 }
 
 .info-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .info-row span {
-    display: inline-block;
+  display: inline-block;
+}
+footer .info_row_c span{
+  color:white;
 }
 
-footer .info_row_c span {
-    color: white;
+.copyright {
+  margin-top: 5px;
+  color: #b0ad9e;
 }
 
 .footer-icon {
-    gap: 15px;
-    display: flex;
-    justify-content: flex-start;
+  gap: 15px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .footer-icon a {
-    color: #d1cfc7;
-    width: 36px;
-    height: 36px;
-    border: 1px solid #d1cfc7;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
+  color: #d1cfc7;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d1cfc7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-footer img {
-    height: 40px;
-    object-fit: contain;
-    float: right;
+footer img{
+  height: 40px;
+  object-fit: contain;
+  float: right;
+  margin-bottom: 70px;
 }
-
+/* //footer */
+/* tab */
 .tab-bar {
-    display: none;
+  display: none;
 }
+/* //tab */
 
-/* ==========================================
-   Responsive: Tablet (Max 1024px)
-   ========================================== */
+
 @media screen and (max-width: 1024px) {
     header .menu { margin: 0 30px; }
     header .menu .nav { display: flex; }
