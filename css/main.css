@@ -517,8 +517,8 @@ body > section.section7{
 }
 
 .course-card .card-image {
-    width: 480px;
-    height: 280px;
+    width: 520px;
+    height: 300px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
@@ -560,13 +560,11 @@ body > section.section7{
 /* 동봉코스: 이미지 우측 하단 오버레이 */
 .course-card.card-dongbong .card-content {
     right: 0;
-    bottom: -15px;
 }
 
 /* 서봉코스: 이미지 좌측 하단 오버레이 */
 .course-card.card-seobong .card-content {
     left: 0;
-    bottom: -15px;
 }
 
 .course-card .course-title {
