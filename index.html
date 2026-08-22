@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팔공컨트리클럽</title>
+    <link rel="shortcut icon" href="image/fa.png" type="favicon">
+
+    <link rel="stylesheet" href="css/main.css">
+    <script src="script/jquery-4.0.0.min.js"></script>
+    <script src="script/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS & JS -->
+    <link rel="stylesheet" href="script/swiper-bundle.min.css">
+    <script src="script/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+     <!-- scroll-button -->
+    <button id="back-to-top" class="top-btn" aria-label="맨 위로 이동">
+        <svg class="progress-ring" width="50" height="50">
+            <circle class="progress-ring__circle" stroke="#0B203F" stroke-width="3" fill="transparent" r="20" cx="25" cy="25"/>
+        </svg>
+        <span class="arrow">↑</span>
+    </button>
+
+    <!-- GSAP 라이브러리 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- 인터랙션 스크립트 -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. GSAP ScrollTrigger 플러그인 등록
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Section1: 카드 순차 등장
+        gsap.from(".section1 .s1 > *", {
+          scrollTrigger: { trigger: ".section1", start: "top 80%" },
+          y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+        });
+
+        // Section2: 코스 카드 지그재그 슬라이드
+        gsap.from(".section2 .s1", {
+          scrollTrigger: { trigger: ".section2", start: "top 75%" },
+          x: -60, opacity: 0, duration: 1.2, ease: "power3.out"
+        });
+        gsap.from(".course-card", {
+          scrollTrigger: { trigger: ".s1-1", start: "top 80%" },
+          x: 80, opacity: 0, duration: 1.2, stagger: 0.3, ease: "power3.out"
+        });
+
+        // Section3 & Section7: 등장 애니메이션
+        gsap.from(".section3 .card", {
+          scrollTrigger: { trigger: ".section3", start: "top 75%" },
+          y: 60, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+        });
+        gsap.from(".section7 .news-card", {
+          scrollTrigger: { trigger: ".section7", start: "top 80%" },
+          y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+        });
+
+        // 2. Section1 Swiper 초기화 및 프로그레스 바 연동
+        const totalSlides = document.querySelectorAll('.section1Swiper .swiper-slide').length;
+        const progressFill = document.getElementById("progressFill");
+        const progressBar = document.getElementById("progressBar");
+
+        const section1Swiper = new Swiper('.section1Swiper', {
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          spaceBetween: 30,
+          loop: false,
+          initialSlide: 2,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          on: {
+            init: function () {
+              updateProgress(this.activeIndex);
+            },
+            slideChange: function () {
+              updateProgress(this.activeIndex);
+            }
+          }
+        });
+
+        function updateProgress(index) {
+          if (progressFill && totalSlides > 0) {
+            const stepPercent = 100 / totalSlides;
+            progressFill.style.width = `${stepPercent}%`;
+            progressFill.style.left = `${stepPercent * index}%`;
+          }
+        }
+
+        // 프로그레스 바 클릭 시 해당 슬라이드로 이동
+        if (progressBar) {
+          progressBar.addEventListener("click", (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const ratio = clickX / rect.width;
+            const targetIndex = Math.floor(ratio * totalSlides);
+            const clampedIndex = Math.max(0, Math.min(totalSlides - 1, targetIndex));
+            section1Swiper.slideTo(clampedIndex);
+          });
+        }
+
+        // 3. Top 버튼 스크롤 프로그레스 & Smooth Scroll 기능
+        const topBtn = document.getElementById("back-to-top");
+        const circle = document.querySelector('.progress-ring__circle');
+        const radius = circle ? circle.r.baseVal.value : 0;
+        const circumference = 2 * Math.PI * radius;
+
+        if (circle) {
+          circle.style.strokeDasharray = `${circumference} ${circumference}`;
+          circle.style.strokeDashoffset = circumference;
+        }
+
+        window.addEventListener("scroll", () => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+          
+          if (circle) {
+            const offset = circumference - (scrollPercent * circumference);
+            circle.style.strokeDashoffset = offset;
+          }
+
+          if (scrollTop > 400) {
+            topBtn.classList.add("show");
+          } else {
+            topBtn.classList.remove("show");
+          }
+
+          const header = document.querySelector("header");
+          if (scrollTop > 50) {
+              header.classList.add("scrolled");
+          } else {
+              header.classList.remove("scrolled");
+          }
+        });
+
+        topBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    </script>
+     <!-- //scroll-button -->
+
+
+    <!-- header -->
+     <header>
+        <div class="menu">
+            <a href="./index.html"><img src="image/logo.png" alt="로고이미지"></a>
+            <div class="ham">
+                <img src="icon/hamburger.svg" alt="hamburger">
+            </div>
+            <div class="nav">
+            <ul class="gnb">
+                <li>
+                    <a href="#">클럽소개</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">클럽스토리</a></li>
+                        <li><a href="#">찾아오시는길</a></li>
+                        <li><a href="#">시설안내</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">코스소개</a>
+                    <ul class="sub_menu">
+                        <li><a href="sub/About.html">코스안내</a></li>
+                        <li><a href="#">동봉코스</a></li>
+                        <li><a href="#">서봉코스</a></li>
+                        <li><a href="#">로컬룰</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">이용안내</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">이용요금</a></li>
+                        <li><a href="#">입장안내</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">예약하기</a>
+                    <ul class="sub_menu">
+                        <li><a href="sub/About2.html">실시간예약</a></li>
+                        <li><a href="#">대기예약</a></li>
+                        <li><a href="#">예약확인</a></li>
+                        <li><a href="#">예약취소</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">커뮤니티</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">포토갤러리</a></li>
+                        <li><a href="#">명예의전당</a></li>
+                        <li><a href="#">조인게시판</a></li>
+                        <li><a href="#">주변관광지</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">고객센터</a>
+                    <ul class="sub_menu">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">분실물안내</a></li>
+                        <li><a href="#">자료실</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+     </header>
+    <!-- //header -->
+
+    <!-- main -->
+    <section class="main">
+        <div class="main_img">
+            <!-- 기존 img 태그 대신 video 태그로 변경됨 -->
+            <video autoplay muted loop playsinline>
+                <source src="./video/1.mp4" type="video/mp4">
+                동영상을 지원하지 않는 브라우저입니다.
+            </video>
+
+            <div class="text_box">
+                <h2>WELCOME TO</h2>
+                <h3>
+                    <span>PALGONG</span>
+                    <span>COUNTRYGOLF</span>
+                    <br>
+                    <span>CLUB</span>
+                </h3>
+                <p>편안함 속에서 라운드의 여운은 더 길어집니다.<br>
+                    최고 수준의 클럽하우스와 골프호텔, 그 창 밖으로 펼쳐지는 바다를 느껴보세요.</p>
+            </div>
+
+            <!-- 빠른 예약 바 -->
+            <div class="quick_booking_bar">
+                <div class="booking_field">
+                    <label><i class="fa-regular fa-compass"></i> 코스 선택</label>
+                    <select>
+                        <option>전체 코스</option>
+                        <option>동봉 코스</option>
+                        <option>서봉 코스</option>
+                    </select>
+                </div>
+                <div class="booking_field">
+                    <label><i class="fa-regular fa-calendar"></i> 날짜 선택</label>
+                    <input type="date" value="2026-08-12">
+                </div>
+                <div class="booking_field">
+                    <label><i class="fa-regular fa-user"></i> 인원</label>
+                    <select>
+                        <option>4인 (1카트)</option>
+                        <option>3인</option>
+                        <option>2인</option>
+                    </select>
+                </div>
+                <button type="button" class="booking_submit">
+                    <span>예약하기</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            <!-- //빠른 예약 바 -->
+        </div>
+    </section>
+    <!-- //main -->
+
+
+    <!-- section1 -->
+    <section class="section1">
+        <div class="s1">
+            <h2>DONGBONG COURSE HOLE</h2>
+            <p>전 세계 어느 코스와 비교해도 손색 없는 시그니처 홀입니다.<br/>
+            동봉코스의 빼어난 경치는 플레이에 쾌감을 더하고 짜릿함 넘치는 스코어를 선사합니다.</p>
+        </div>
+        <div class="s2">
+            <div class="swiper section1Swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="image/5.jpg" alt="5"></div>
+                    <div class="swiper-slide"><img src="image/4.jpg" alt="4"></div>
+                    <div class="swiper-slide"><img src="image/1.jpg" alt="1"></div>
+                    <div class="swiper-slide"><img src="image/2.jpg" alt="2"></div>
+                    <div class="swiper-slide"><img src="image/3.jpg" alt="3"></div>
+                </div>
+                
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+    <!-- //section1 -->
+
+
+    <!-- section2 -->
+    <section class="section2">
+        <div class="s1">
+            <h3>ABOUT PALGONG</h3>
+            <h2>PALGONG<br>COUNTRY CLUB</h2>
+            <p>자연과 사람, 그리고 품격이 함께하는 곳</p>
+            <a href="#" class="more-btn">
+                <span>더보기</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="s1-1">
+            <div class="course-card card-dongbong">
+                <div class="card-image">
+                    <img src="image/6.jpg" alt="DONGBONG COURSE">
+                </div>
+                <div class="card-content">
+                    <h3 class="course-title">DONGBONG COURSE</h3>
+                    <p class="course-desc">
+                        아름다운 수림 그리고 호수 등 남성적인<br>
+                        동봉코스에서 계곡넘기기, 연못 넘기기<br>
+                        등 다양한 형태의 라운딩을 즐길 수 있다.
+                    </p>
+                </div>
+            </div>
+
+           
+            <div class="course-card card-seobong">
+                <div class="card-content">
+                    <h3 class="course-title">SEOBONG COURSE</h3>
+                    <p class="course-desc">
+                        평탄하게 넓게 펼쳐진 페어웨이와 스<br>
+                        릴있고 우아함과 난이도를 함께 갖춘<br>
+                        여성적인 코스이다.
+                    </p>
+                </div>
+                <div class="card-image">
+                    <img src="image/7.jpg" alt="SEOBONG COURSE">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //section2 -->
+
+    
+    <!-- section3 -->
+     <section class="section3">
+        <div class="s1">
+            <h2>GOLF COURSE</h2>
+            <a href="#" class="more-btn">
+            <span>코스전체보기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="image/8.jpg" alt="9">
+                <div class="card_text">
+                    <h2>DONGBONGCOURSE</h2>
+                    <p>동봉코스</p>
+                </div>
+                <a href="#" class="btn">
+                <span>자세히보기</span>
+                <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <img src="image/9.jpg" alt="10">
+                <div class="card_text">
+                    <h2>SEOBONGCOURSE</h2>
+                    <p>서봉코스</p>
+                </div>
+                <a href="#" class="btn">
+                <span>자세히보기</span>
+                <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div> 
+
+            <div class="card">
+                <img src="image/10.jpg" alt="11">
+                <div class="card_text">
+                    <h2>LOCALCOURSE</h2>
+                    <p>로컬코스</p>
+                </div>
+                <a href="#" class="btn">
+                <span>자세히보기</span>
+                <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+     </section>
+    <!-- //section3 -->
+
+
+    <!-- section4 -->
+    <section class="section4">
+        <div>
+            <div class="s1">
+                <div class="s1_text">
+                    <span class="sub_title">PALGONG COUNTRY CLUB</span>
+                    <h2>CLUB의 시작은, <span class="highlight">미래다 .</span></h2>
+                    <h4 class="sub_lead">골프 문화를 선도하는 골프 클럽</h4>
+                    <h3>PALGONG CC는 최고의 환경과 최고의 조건을 두루<br>
+                        갖춘 수준 높은 컨트리 클럽입니다.<br>
+                        언제나 더 좋은 서비스를 위해 항상 처음과 같은<br>
+                        마음으로 고객님들을 마주하고 있습니다.</h3>
+                    <a href="#" class="more-btn light">
+                    <span>자세히보기</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="image-container">
+                <img src="image/11.jpg" alt="12">
+            </div>
+        </div>
+    </section>
+    <!-- //section4 --> 
+
+
+     <!-- section5 -->
+      <section class="section5">
+        <div class="s1">
+            <div class="s1-1">
+                <div class="text_box">
+                    <img src="icon/golf.svg" alt="golf">
+                    <h3>최고의 45홀 코스<br>
+                    전략성과 아름다움을 모두 갖춘 코스</h3>
+                </div>
+            </div>
+            <div class="s1-2">
+                <div class="text_box">
+                    <img src="icon/leef.svg" alt="leef">
+                    <h3>자연 친화적 환경<br>
+                    자연과 하나되는 힐링 플레이</h3>
+                </div>
+            </div>
+            <div class="s1-3">
+                <div class="text_box">
+                    <img src="icon/person.svg" alt="person">
+                    <h3>프리미엄 서비스<br>
+                    세심하고 품격 있는 서비스 제공</h3>
+                </div>
+            </div>
+            <div class="s1-4">
+                <div class="text_box">
+                    <img src="icon/Trophy.svg" alt="Trophy">
+                    <h3>최고의 경험 제공<br>
+                    특별한 순간을 더욱 가치 있게</h3>
+                </div>
+            </div>
+        </div>
+      </section>
+     <!-- //section5 -->
+
+
+     <!-- section7 -->
+      <section class="section7">
+        <div class="s1">
+            <h1>CLUB NEWS</h1>
+        </div>
+        <div class="s2">
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">NOTICE</span>
+                    <img src="image/banner1.jpg" alt="banner1">
+                </div>
+                <div class="card-body">
+                    <h3>프로상 신규 입점업체 안내</h3>
+                    <p>새롭게 입점하는 브랜드를 소개합니다.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">NOTICE</span>
+                    <img src="image/banner2.jpg" alt="banner2">
+                </div>
+                <div class="card-body">
+                    <h3>홈페이지 서버 점검안내</h3>
+                    <p>보다 안정적인 서비스 제공을 위한 서버 점검을 진행합니다.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">INFORMATION</span>
+                    <img src="image/banner3.jpg" alt="banner3">
+                </div>
+                <div class="card-body">
+                    <h3>7월 입장요금 안내</h3>
+                    <p>시행기간 2026년7월1일~7월31일</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">RESERVATION</span>
+                    <img src="image/banner4.jpg" alt="banner4">
+                </div>
+                <div class="card-body">
+                    <h3>7월 공휴일 예약안내</h3>
+                    <p>공휴일 예약 일정을 확인해 주세요.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">EVENT</span>
+                    <img src="image/banner5.jpg" alt="banner5">
+                </div>
+                <div class="card-body">
+                    <h3>팔공CC 혹서기 특별 할인 이벤트</h3>
+                    <p>무더운 여름, 시원한 혜택을 만나보세요.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-thumb">
+                    <span class="badge">INFORMATION</span>
+                    <img src="image/banner6.jpg" alt="banner6">
+                </div>
+                <div class="card-body">
+                    <h3>6월 입장요금 안내</h3>
+                    <p>시행기간 2026년6월1일~6월30일</p>
+                </div>
+            </div>
+        </div>
+      </section>
+    <!-- //section7 -->
+
+
+<!-- footer -->
+<footer>
+    <div class="footer-inner">
+        <!-- 상단: 로고 & SNS 아이콘 -->
+        <div class="footer-top">
+            <a href="#" class="footer-logo"><img src="image/logo.png" alt="logo"></a>
+            <div class="footer-icon">
+                <a href="#"><img src="icon/instagram.svg" alt="instagram"></a>
+                <a href="#"><img src="icon/youtube.svg" alt="youtube"></a>
+                <a href="#"><img src="icon/blog.svg" alt="blog"></a>
+            </div>
+        </div>
+
+        <!-- 하단: 회사 정보 & 저작권 -->
+        <div class="footer-bottom">
+            <div class="footer-info">
+                <div class="info-row">
+                    <span>우경개발(주)</span>
+                    <span>대구시 동구 팔공산로 237길 186(도학동, 팔공컨트리클럽)</span>
+                    <span>통신판매번호 : 제2009-대구동구-0217호</span>
+                </div>
+                <div class="info-row">
+                    <span>사업자등록번호 : 502-81-09563</span>
+                    <span>대표이사 : 정찬우</span>
+                    <span>Tel. 053-982-8080~5</span>
+                    <span>Fax. 053-982-8067</span>
+                </div>
+                <div class="info_row_c">
+                    <span>Copyright © 2026 Palgong Country Club. All Rights Reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- //footer -->
+
+    
+    <!-- tab-bar -->
+    <nav class="tab-bar">
+        <a href="#" class="tab-item active">
+            <img src="./icon/home.svg" alt="홈">
+            <span>홈</span>
+        </a>
+        <a href="#" class="tab-item">
+            <img src="./icon/clock.svg" alt="예약">
+            <span>예약</span>
+        </a>
+        <a href="#" class="tab-item">
+            <img src="./icon/person.svg" alt="MY팔공">
+            <span>MY팔공</span>
+        </a>
+        <a href="#" class="tab-item">
+            <img src="./icon/hamburgerblack.svg" alt="메뉴">
+            <span>메뉴</span>
+        </a>
+    </nav>
+    <!-- //tab-bar -->
+
+</body> 
+</html>
