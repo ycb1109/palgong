@@ -126,12 +126,23 @@ header .menu{
     display: flex;
     justify-content: space-between;
 }
-header .menu img{
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  align-self: center;
+.menu {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 80px;            
 }
+
+.menu a {
+  display: inline-block;
+  vertical-align: middle;
+}
+.menu a img {
+  width: 120px;
+  height: auto; 
+  display: block;
+}
+
 header .menu .ham{
   display: none;
 }
@@ -1033,12 +1044,13 @@ body > section.section1 {
 /* //section7 */
 
 /* footer */
-footer{
+footer {
   background-color: #0B203F;
   color: #ffffff;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
   line-height: 1.8;
+  padding: 60px 0;
 }
 
 .footer-inner {
@@ -1046,54 +1058,83 @@ footer{
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding-top: 70px;
+  padding-top: 0;
+}
+
+/* 상단 : 로고 & SNS 아이콘 */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* 중간 구분선 */
+}
+
+.footer-top .footer-logo img {
+  height: 36px;
+  object-fit: contain;
+  float: none;
+  margin-bottom: 0;
+}
+
+.footer-top .footer-icon {
+  display: flex;
+  gap: 12px;
+}
+
+/* SNS 아이콘 원형 테두리 스타일 */
+.footer-top .footer-icon a {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.footer-top .footer-icon a:hover {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-top .footer-icon img {
+  width: 18px;
+  height: 18px;
+  float: none;
+  margin-bottom: 0;
+}
+
+/* 하단 : 회사 정보 */
+.footer-bottom {
+  padding-top: 25px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .info-row {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.info-row span {
-  display: inline-block;
-}
-footer .info_row_c span{
-  color:white;
+.info_row_c {
+  margin-top: 15px;
 }
 
-.copyright {
-  margin-top: 5px;
-  color: #b0ad9e;
-}
-
-.footer-icon {
-  gap: 15px;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.footer-icon a {
-  color: #d1cfc7;
-  width: 36px;
-  height: 36px;
-  border: 1px solid #d1cfc7;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-footer img{
-  height: 40px;
-  object-fit: contain;
-  float: right;
-  margin-bottom: 70px;
+.info_row_c span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
 }
 /* //footer */
+
+
 
 /* tab */
 .tab-bar {
