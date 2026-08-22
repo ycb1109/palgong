@@ -279,92 +279,87 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- 인터랙션 스크립트 -->
-    <script>
-      gsap.registerPlugin(ScrollTrigger);
+<script>
+  gsap.registerPlugin(ScrollTrigger);
 
-      // 데스크톱 이상에서만 GSAP 애니메이션 실행
-      if (window.innerWidth > 575) {
-        gsap.from(".section1 .s1 > *", {
-          scrollTrigger: { trigger: ".section1", start: "top 80%" },
-          y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
-        });
+  // 데스크톱 이상에서만 GSAP 애니메이션 실행
+  if (window.innerWidth > 575) {
+    gsap.from(".section1 .s1 > *", {
+      scrollTrigger: { trigger: ".section1", start: "top 80%" },
+      y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+    });
+  }
 
-        gsap.from(".section3 .allbox", {
-          scrollTrigger: { trigger: ".section3", start: "top 75%" },
-          y: 50, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out"
-        });
+  // 575px 이하 모바일용 자동 슬라이드 제어 스크립트
+  let slideInterval = null;
+  let currentIndex = 0;
+
+  function startMobileSlide() {
+    const boxes = document.querySelectorAll('.section3 .allbox');
+    if (!boxes.length) return;
+
+    if (window.innerWidth <= 575) {
+      if (!slideInterval) {
+        slideInterval = setInterval(() => {
+          boxes[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % boxes.length;
+          boxes[currentIndex].classList.add('active');
+        }, 3000); // 3초 간격 전환
+      }
+    } else {
+      if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = null;
+      }
+      // PC 모드일 때 모든 박스가 보이도록 강제 초기화
+      boxes.forEach(box => {
+        box.classList.remove('active');
+        box.style.display = 'block';
+        box.style.opacity = '1';
+      });
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', startMobileSlide);
+  window.addEventListener('resize', startMobileSlide);
+
+  // Top 버튼 & 헤더 스크롤 이벤트
+  const topBtn = document.getElementById("back-to-top");
+  const circle = document.querySelector('.progress-ring__circle');
+  const header = document.querySelector("header");
+
+  if (circle) {
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollTop / docHeight;
+      
+      circle.style.strokeDashoffset = circumference - (scrollPercent * circumference);
+
+      if (scrollTop > 400) {
+        topBtn.classList.add("show");
+      } else {
+        topBtn.classList.remove("show");
       }
 
-      // 575px 이하 모바일용 자동 슬라이드 제어 스크립트
-      let slideInterval = null;
-      let currentIndex = 0;
-
-      function startMobileSlide() {
-        const boxes = document.querySelectorAll('.section3 .allbox');
-        if (!boxes.length) return;
-
-        if (window.innerWidth <= 575) {
-          if (!slideInterval) {
-            slideInterval = setInterval(() => {
-              boxes[currentIndex].classList.remove('active');
-              currentIndex = (currentIndex + 1) % boxes.length;
-              boxes[currentIndex].classList.add('active');
-            }, 3000); // 3초 간격 전환
-          }
-        } else {
-          if (slideInterval) {
-            clearInterval(slideInterval);
-            slideInterval = null;
-            boxes.forEach(box => {
-              box.classList.remove('active');
-              box.style.display = '';
-              box.style.opacity = '';
-            });
-          }
-        }
+      if (scrollTop > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
       }
+    });
+  }
 
-      window.addEventListener('DOMContentLoaded', startMobileSlide);
-      window.addEventListener('resize', startMobileSlide);
-
-      // Top 버튼 & 헤더 스크롤 이벤트
-      const topBtn = document.getElementById("back-to-top");
-      const circle = document.querySelector('.progress-ring__circle');
-      const header = document.querySelector("header");
-
-      if (circle) {
-        const radius = circle.r.baseVal.value;
-        const circumference = 2 * Math.PI * radius;
-        circle.style.strokeDasharray = `${circumference} ${circumference}`;
-        circle.style.strokeDashoffset = circumference;
-
-        window.addEventListener("scroll", () => {
-          const scrollTop = window.scrollY;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const scrollPercent = scrollTop / docHeight;
-          
-          circle.style.strokeDashoffset = circumference - (scrollPercent * circumference);
-
-          if (scrollTop > 400) {
-            topBtn.classList.add("show");
-          } else {
-            topBtn.classList.remove("show");
-          }
-
-          if (scrollTop > 50) {
-            header.classList.add("scrolled");
-          } else {
-            header.classList.remove("scrolled");
-          }
-        });
-      }
-
-      if (topBtn) {
-        topBtn.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-      }
-    </script>
+  if (topBtn) {
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+</script>
 </body>
 </html>

@@ -1236,12 +1236,10 @@ footer img{
 }
 
 
-/* ==========================================
-   MOBILE SCREEN (max-width: 575px)
-   ========================================== */
+
+
 @media screen and (max-width: 575px) {
 
-  /* 모바일 탑 버튼 위치 조정 */
   .top-btn {
     bottom: 80px;
     right: 16px;
@@ -1251,16 +1249,21 @@ footer img{
   .progress-ring { width: 44px; height: 44px; }
   .progress-ring__circle { r: 17; cx: 22; cy: 22; }
 
-  /* 공통 섹션 패딩 & 간격 규격화 (모바일) */
+
   body > section:not(.main) {
     width: 100%;
     max-width: 100%;
-    margin: 0 auto 70px auto;
+    margin: 0 auto 60px auto;
     padding: 0 20px;
   }
 
   /* Header */
-  header { height: 60px; }
+  header { 
+    height: 60px; 
+    background-color: rgba(11, 32, 63, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
   header .menu {
     position: relative;
     display: flex;
@@ -1281,51 +1284,96 @@ footer img{
   header .menu .ham img { height: 22px; }
   header .menu .nav { display: none; }
 
-  /* Main Visual */
   .main {
     height: auto;
-    min-height: 520px;
     margin-bottom: 50px;
+    position: relative;
+  }
+
+  .main .main_img {
+    height: 100%;
+  }
+
+  .main .main_img img {
+    padding-top: 0; 
+    height: 440px;
+    object-fit: cover;
   }
 
   .main .main_img .text_box {
     left: 20px;
     right: 20px;
-    top: 30%;
-    transform: translateY(-50%);
+    top: 85px;
+    transform: none;
   }
-  .main .main_img .text_box h2 { font-size: 13px; }
-  .main .main_img .text_box h3 { font-size: 24px; line-height: 1.2; }
-  .main .main_img .text_box p { font-size: 12px; line-height: 1.5; padding-top: 8px; }
+  .main .main_img .text_box h2 { 
+    font-size: 12px; 
+    letter-spacing: 0.08em;
+  }
+  .main .main_img .text_box h3 { 
+    font-size: 22px; 
+    line-height: 1.25; 
+    margin-top: 4px;
+  }
+  .main .main_img .text_box p { 
+    font-size: 12px; 
+    line-height: 1.5; 
+    padding-top: 8px; 
+    opacity: 0.9;
+  }
 
-  /* Quick Booking Bar */
+
   .quick_booking_bar {
     position: relative;
-    bottom: auto;
+    bottom: 10px;
     left: auto;
     transform: none;
-    width: calc(100% - 80px);
-    margin: -60px auto 0 auto;
+    width: 82%; 
+    margin: -210px auto 1px auto; 
     flex-direction: column;
     height: auto;
-    padding: 20px;
-    gap: 12px;
-    border-radius: 16px;
+    padding: 10px 14px; 
+    gap: 4px; 
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
+
   .quick_booking_bar .booking_field {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 0 0 10px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding: 2px 0 4px 0; 
     height: auto;
+    gap: 0px;
   }
-  .quick_booking_bar .booking_field:last-of-type { border-bottom: none; }
+
+  .quick_booking_bar .booking_field label {
+    font-size: 10px; 
+    gap: 4px;
+    margin-bottom: 1px;
+  }
+
+  .quick_booking_bar .booking_field select,
+  .quick_booking_bar .booking_field input {
+    font-size: 12px; 
+    padding: 0;
+    height: 22px; 
+  }
+
+  .quick_booking_bar .booking_field:last-of-type { 
+    border-bottom: none; 
+  }
+  
   .quick_booking_bar .booking_submit {
     width: 100%;
     justify-content: center;
     margin-left: 0;
-    height: 48px;
+    height: 34px; 
+    font-size: 12px; 
+    border-radius: 6px;
+    margin-top: 4px;
   }
+
 
   /* Section 1 */
   .section1 .s1 { margin-top: 0; margin-bottom: 15px; }
@@ -1344,26 +1392,64 @@ footer img{
   .section2 .s1 h3 { font-size: 13px; margin-bottom: 6px; }
   .section2 .s1 h2 { font-size: 22px; margin-bottom: 10px; }
   .section2 .s1 p { font-size: 13px; margin-bottom: 16px; }
+  .section2 .s1 .more-btn{
+    width: 120px;
+    height: 40px;
+  }
+   .section2 .s1 .more-btn span{
+    font-size: 12px;
+   }
   
-  .s1-1 { gap: 30px; }
+.s1-1 { 
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+  }
+
   .course-card {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   }
+
   .course-card .card-image {
     width: 100%;
     height: 180px;
   }
+
+  .course-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .course-card .card-content {
     position: relative;
-    width: 90%;
+    width: 100%;
     height: auto;
-    margin: -30px auto 0 auto;
-    padding: 16px;
+    margin: 0;
+    padding: 18px 16px;
+    background: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
   }
-  .course-card .course-title { font-size: 15px; padding-bottom: 4px; }
-  .course-card .course-desc { font-size: 12px; line-height: 1.5; }
 
+  .course-card .course-title { 
+    font-size: 16px; 
+    font-weight: 700;
+    color: #0b203f;
+    padding-bottom: 6px; 
+  }
+
+  .course-card .course-desc { 
+    font-size: 13px; 
+    color: #666666;
+    line-height: 1.55; 
+  }
   /* Section 3 */
   .section3 .s1 {
     margin-bottom: 16px;
@@ -1413,11 +1499,11 @@ footer img{
     gap: 16px 12px;
   }
   .section5 .s1 img { width: 30px; height: 30px; }
-  .section5 .s1 h3 { font-size: 12px; line-height: 1.4; }
+  .section5 .s1 h3 { font-size: 10px; line-height: 1.4; }
 
   /* Section 7 */
   .section7 .s1 { margin-bottom: 20px; }
-  .section7 .s1 h1 { font-size: 22px; }
+  .section7 .s1 h1 { font-size: 20px; }
   .section7 .s2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1426,12 +1512,12 @@ footer img{
   .news-card .card-thumb { height: 110px; }
   .news-card .card-thumb .badge { font-size: 10px; padding: 4px 8px; }
   .news-card .card-body { padding: 12px 10px; min-height: auto; }
-  .news-card .card-body h3 { font-size: 13px; margin-bottom: 4px; }
-  .news-card .card-body p { font-size: 11px; }
+  .news-card .card-body h3 { font-size: 10px; margin-bottom: 4px; }
+  .news-card .card-body p { font-size: 6px; }
 
   /* Footer & Mobile Navigation */
   footer {
-    padding: 40px 20px 100px 20px; /* 하단 탭바 여백(100px) 반영 */
+    padding: 40px 20px 100px 20px;
   }
   .footer-inner { gap: 16px; }
   .footer-info .info-row {
