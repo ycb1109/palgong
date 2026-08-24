@@ -223,6 +223,7 @@ header .menu ul li{
   height: calc(100vh - 64px);
   position: relative;
   overflow: hidden;
+  top: 54px;
 }
 
 .main .main_img {
@@ -393,10 +394,11 @@ body > section:not(.main){
     text-align: center;
 }
 body > section.section1 {
-    margin-bottom: 250px;
+    margin-bottom: 180px;
 }
 .section1 .s1 {
-    margin-top: 180px;
+    margin-top: 140px;
+    margin-bottom: 50px;
 }
 .section1 .s1 h2 {
     font-family: "cinzel-b";
@@ -406,33 +408,37 @@ body > section.section1 {
 }
 .section1 .s1 p {
     font-family: "noto_r";
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.10em;
     line-height: 150%;
-    color: #585858;
+    color: #494848;
+    margin-bottom: 30px;
 }
 .section1 .s2 {
     position: relative;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 20px;
+    overflow: hidden;
 }
 
 
 .section1Swiper {
     width: 100%;
-    padding: 40px 0;
+    padding: 45px 0;
     overflow: visible;
 }
 
 .section1Swiper .swiper-slide {
-    width: 340px;
-    height: 398px;
-    border-radius: 4px;
+    width: 300px;
+    height: 380px;
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    opacity: 0.5;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0.45;
     cursor: pointer;
+    transform: scale(0.88);
+    transform-origin: center center;
 }
 
 .section1Swiper .swiper-slide img {
@@ -442,34 +448,31 @@ body > section.section1 {
 }
 
 
-.section1Swiper .swiper-slide-active {
-    opacity: 1;
-    transform: scale(1.2);
-    z-index: 10;
+.section1Swiper .swiper-slide.swiper-slide-active,
+.section1Swiper .swiper-slide.swiper-slide-duplicate-active {
+    opacity: 1 !important;
+    transform: scale(1.18) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    z-index: 10 !important;
 }
 
 
-.section1Swiper .swiper-button-prev,
-.section1Swiper .swiper-button-next {
+.section1 .s2 .swiper-button-prev,
+.section1 .s2 .swiper-button-next {
     color: #0B203F;
     width: 44px;
     height: 44px;
-}
-
-.section1Swiper .swiper-button-prev,
-.section1Swiper .swiper-button-next {
     top: 50%;
     transform: translateY(-50%); 
+    z-index: 20;
 }
 
 
 .section1 .s2 .swiper-button-prev {
-  color: #0B203F;
-    left: 15% ;
+    left: 8%;
 }
 .section1 .s2 .swiper-button-next {
-  color: #0B203F;
-    right: 15%;
+    right: 8%;
 }
 /* //section1 */
 
@@ -479,16 +482,19 @@ body > section.section1 {
 .section2 {
     max-width: 1400px;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 250px auto;
     display: flex;
     justify-content: space-between;
-    gap: 60px;
-    margin-bottom: 250px;
+    align-items: flex-start;
+    gap: 40px;
 }
 
 .section2 .s1 {
-    flex: 0 0 300px;
+    flex: 0 0 280px;
+    position: sticky;
+    top: 100px; /* 스크롤 시 좌측 텍스트 영역 고정 효과 */
 }
+
 .section2 .s1 h3 {
     font-family: "cinzel-b"; 
     font-size: 18px;
@@ -515,7 +521,6 @@ body > section.section1 {
     margin-bottom: 30px;
 }
 
-
 .section2 .s1 .more-btn {
     display: inline-flex;
     align-items: center;
@@ -539,43 +544,27 @@ body > section.section1 {
     box-shadow: 0 4px 12px rgba(11, 32, 63, 0.2);
 }
 
+/* 카드 컨테이너 영역 */
 .s1-1 {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 130px;
+    gap: 80px;
 }
 
 .course-card {
     position: relative;
     width: 800px;
-    display: flex;
-    align-items: flex-end;
     cursor: pointer;
 }
 
-.course-card.card-dongbong {
-    margin-right: 140px;
-}
-
-.course-card.card-seobong {
-    margin-left: auto; 
-    margin-right: 0;
-}
-
+/* 카드 이미지 영역 */
 .course-card .card-image {
-    width: 650px;
-    height: 375px;
-    border-radius: 12px;
+    width: 100%;
+    height: 420px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-}
-
-.course-card.card-dongbong .card-image {
-    margin-right: auto;
-}
-
-.course-card.card-seobong .card-image {
-    margin-left: auto;
 }
 
 .course-card .card-image img {
@@ -589,30 +578,46 @@ body > section.section1 {
     transform: scale(1.05);
 }
 
+/* 텍스트 박스 (오른쪽 아래 바짝 붙이기) */
 .course-card .card-content {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 26px 30px;
-    border-radius: 8px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    right: 0;
+    bottom: 0;
     z-index: 2;
-    writing-mode: horizontal-tb;
-    width: 280px;
-    height: 150px;
+    
+    /* 너비 및 여백 설정 */
+    width: 290px;
+    height: auto;
+    padding: 30px 24px 24px 24px;
+    
+    /* 반투명 백그라운드 및 모서리 설정 (상단만 둥글게) */
+    background-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 16px; /* 이미지의 우측 하단 라운드와 일치 */
+    
+    /* 정렬 */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
 }
 
-.course-card.card-dongbong .card-content {
-    right: 0;
+
+/* 첫 번째 동봉코스: 왼쪽 정렬 */
+.course-card.card-dongbong {
+    margin-left: 0;
+    margin-right: auto;
 }
 
-.course-card.card-seobong .card-content {
-    left: 0;
+/* 두 번째 서봉코스: 오른쪽 정렬 */
+.course-card.card-seobong {
+    margin-left: auto;
+    margin-right: 0;
 }
-
+/* 타이틀 & 본문 텍스트 */
 .course-card .course-title {
     padding-top: 0;
     padding-bottom: 12px;
@@ -625,10 +630,11 @@ body > section.section1 {
 
 .course-card .course-desc {
     font-family: "noto_r", sans-serif;
-    font-size: 13px;
-    color: #444444;
+    font-size: 13.5px;
+    color: #333333;
     line-height: 1.6;
     letter-spacing: -0.2px;
+    word-break: keep-all;
 }
 /* //section2 */
 
@@ -905,35 +911,52 @@ body > section.section1 {
 /* section5 */
 .section5 {
   max-width: 1400px;
+  margin: 120px auto 200px;
+  padding: 0 20px;
+  text-align: center;
 }
+
 .section5 .s1 {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    gap: 40px;               
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
 }
-.section5 .s1 .text_box {
+
+.section5 .center-item {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  flex-direction: column;
+  align-items: center;
 }
-.section5 .s1 img {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
-    object-fit: contain;
-}
-.section5 .s1 h3 {
-  font-family: "noto_m";
-  font-size: 16px;
-  font-weight: 700;
-  color: #111111;
-  line-height: 150%;
-  font-weight: 580;
-}
-/* //section5 */
 
+.section5 .img-box {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.section5 .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.section5 .text_box h3 {
+  font-family: "noto_b", sans-serif;
+  font-size: 18px;
+  color: #0B203F;
+  margin-bottom: 8px;
+}
+
+.section5 .text_box p {
+  font-family: "noto_r", sans-serif;
+  font-size: 14px;
+  color: #777777;
+  line-height: 1.5;
+  word-break: keep-all;
+}
 
 /* section7  */
 .section7 {
@@ -1199,6 +1222,9 @@ footer {
   }
   .section1 .s1 h2 { font-size: 28px; margin-bottom: 12px; }
   .section1 .s1 p { font-size: 15px; }
+  .section1Swiper {
+    padding: 35px 0;
+  }
   .section1Swiper .swiper-slide {
     width: 260px;
     height: 320px;
@@ -1247,13 +1273,28 @@ footer {
   .section4 .s1 h3 { font-size: 14px; margin-bottom: 30px; line-height: 1.6; }
 
   /* Section 5 */
-  .section5 .s1 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px 20px;
+  .section5 {
+    margin: 80px auto 120px;
   }
-  .section5 .s1 img { width: 38px; height: 38px; }
-  .section5 .s1 h3 { font-size: 14px; line-height: 1.5; }
+
+  .section5 .s1 {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px 20px;
+  }
+  
+  .section5 .img-box {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 12px;
+  }
+  
+  .section5 .text_box h3 {
+    font-size: 16px;
+  }
+  
+  .section5 .text_box p {
+    font-size: 13px;
+  }
 
   /* Section 7 */
   .section7 { margin-bottom: 100px; }
@@ -1419,6 +1460,9 @@ footer {
   .section1 .s1 { margin-top: 0; margin-bottom: 15px; }
   .section1 .s1 h2 { font-size: 20px; margin-bottom: 8px; }
   .section1 .s1 p { font-size: 13px; line-height: 1.5; }
+  .section1Swiper {
+    padding: 65px 0;
+  }
   .section1Swiper .swiper-slide {
     width: 200px;
     height: 260px;
@@ -1533,13 +1577,31 @@ footer {
   .image-container { height: 200px; }
 
   /* Section 5 */
-  .section5 .s1 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
+  .section5 {
+    margin: 60px auto 80px;
+    padding: 0 16px;
   }
-  .section5 .s1 img { width: 30px; height: 30px; }
-  .section5 .s1 h3 { font-size: 10px; line-height: 1.4; }
+  
+  .section5 .s1 {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 32px;
+  }
+  
+  .section5 .img-box {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 10px;
+  }
+  
+  .section5 .text_box h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  
+  .section5 .text_box p {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
 
   /* Section 7 */
   .section7 .s1 { margin-bottom: 20px; }
